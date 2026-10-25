@@ -1,0 +1,57 @@
+{
+  "format": "glTF 2.0 binary",
+  "file_bytes": 62204388,
+  "sha256": "13accf63a66536ab548cea83b366dc3b525f8035883f3988445c9de8b7612c15",
+  "product_objects": 255,
+  "triangles": 1606583,
+  "materials": 25,
+  "embedded_images": 5,
+  "extensions": [
+    "KHR_materials_clearcoat",
+    "KHR_materials_transmission",
+    "KHR_materials_ior",
+    "KHR_materials_emissive_strength",
+    "KHR_materials_sheen",
+    "KHR_texture_transform"
+  ],
+  "units": "meters",
+  "reference": "reference/Reference.png",
+  "reconstruction": "Visible reference details reconstructed; concealed geometry inferred.",
+  "validation": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "animations": [
+    "Hang - towel settle",
+    "Dry - blower rotation",
+    "Sense - sensor sampling",
+    "Control - status sequence",
+    "Dry - full system",
+    "Finish - dock and confirm"
+  ],
+  "hang_animation": {
+    "duration_seconds": 3.45,
+    "tracks": [
+      "translation",
+      "scale",
+      "rotation"
+    ],
+    "motion": "weighted drop, stretch, sway and damped settle"
+  },
+  "towel_deformation": {
+    "type": "pinned vertex morph",
+    "vertices": 731302,
+    "pinned_fold": true,
+    "falloff": "progressive toward free hem"
+  },
+  "sense_animation": {
+    "housing_motion": "fixed",
+    "animated_parts": "sensor face and apertures only",
+    "maximum_scale": 1.006
+  },
+  "dry_animation": {
+    "blower": "accelerated to 3 revolutions per second",
+    "airflow": "sequential low-amplitude duct pulses",
+    "towel": "pinned soft-cloth flutter after vent opening"
+  }
+}

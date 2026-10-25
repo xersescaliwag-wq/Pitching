@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AeroFresh Smart Towel Hanger | Alt+F5 Technologies</title>
+<meta name="description" content="AeroFresh is a towel hanger with a built-in dryer. It senses how damp the towel is and blows air through the towel to dry it. Guests get fresh towels, and hotel staff do less work.">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f172a'/%3E%3Cpath d='M15 41c0-9.4 7.6-17 17-17s17 7.6 17 17' fill='none' stroke='%23ffffff' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0b0f14;
+    --bg-soft:#111821;
+    --panel:rgba(255,255,255,.045);
+    --stroke:rgba(255,255,255,.10);
+    --stroke-strong:rgba(255,255,255,.18);
+    --ink:#eef4f8;
+    --ink-dim:#9db0c0;
+    --ink-faint:#6c8090;
+    --teal:#2fd4c4;
+    --violet:#8b7bff;
+    --radius:18px;
+    --shadow:0 24px 60px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 600px at 78% -10%, rgba(47,212,196,.13), transparent 60%),
+      radial-gradient(900px 520px at 8% 8%, rgba(139,123,255,.12), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font:16px/1.6 "Segoe UI", Inter, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  img{display:block;max-width:100%}
+  .wrap{width:min(1180px, calc(100% - 40px)); margin-inline:auto}
+  section[id]{scroll-margin-top:86px}
+
+  /* ---------- header ---------- */
+  header.site{
+    position:sticky; top:0; z-index:40;
+    backdrop-filter:blur(14px);
+    background:rgba(11,15,20,.72);
+    border-bottom:1px solid var(--stroke);
+  }
+  .site-inner{display:flex;align-items:center;gap:16px;padding:14px 0}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:650;letter-spacing:.2px}
+  .brand-mark{
+    width:34px;height:34px;border-radius:11px;display:grid;place-items:center;
+    background:linear-gradient(145deg,var(--teal),#1a8f9a 55%,var(--violet));
+    box-shadow:0 6px 18px rgba(47,212,196,.28);
+    font-size:17px;
+  }
+  .brand small{display:block;font-weight:400;font-size:11px;color:var(--ink-faint);letter-spacing:.14em;text-transform:uppercase}
+  nav.site-nav{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+  nav.site-nav a{
+    text-decoration:none;color:var(--ink-dim);font-size:14px;padding:8px 13px;border-radius:999px;
+    border:1px solid transparent;transition:.18s;
+  }
+  nav.site-nav a:hover{color:var(--ink);background:rgba(255,255,255,.06);border-color:var(--stroke)}
+
+  /* ---------- hero ---------- */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:center;padding:52px 0 26px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--teal);border:1px solid rgba(47,212,196,.32);background:rgba(47,212,196,.08);
+    padding:6px 12px;border-radius:999px;font-weight:600;
+  }
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 10px var(--teal)}
+  h1{font-size:clamp(34px,4.3vw,54px);line-height:1.06;margin:18px 0 0;letter-spacing:-.02em;font-weight:700}
+  h1 span{background:linear-gradient(100deg,var(--teal),#7fd7ff 45%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{color:var(--ink-dim);max-width:52ch;margin:16px 0 0;font-size:16.5px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+  .chip{
+    font-size:12.5px;color:var(--ink-dim);border:1px solid var(--stroke);background:var(--panel);
+    padding:6px 11px;border-radius:8px;font-variant-numeric:tabular-nums;
+  }
+  .chip b{color:var(--ink);font-weight:600}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;text-decoration:none;cursor:pointer;
+    border-radius:11px;padding:12px 18px;font-size:14.5px;font-weight:600;border:1px solid var(--stroke);
+    background:var(--panel);color:var(--ink);transition:.18s;font-family:inherit;
+  }
+  .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.09);border-color:var(--stroke-strong)}
+  .btn.primary{background:linear-gradient(140deg,var(--teal),#1ea6a0);color:#04211f;border-color:transparent;box-shadow:0 12px 26px rgba(47,212,196,.25)}
+  .btn.primary:hover{box-shadow:0 16px 34px rgba(47,212,196,.34)}
+  .btn svg{width:16px;height:16px;flex:none}
+  .hero-media{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--stroke);background:var(--bg-soft);box-shadow:var(--shadow)}
+  .hero-media img{aspect-ratio:4/3;object-fit:cover;width:100%}
+  .hero-media .tag{
+    position:absolute;left:14px;top:14px;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
+    background:rgba(6,10,14,.68);border:1px solid var(--stroke);padding:6px 10px;border-radius:8px;color:var(--ink-dim);
+    backdrop-filter:blur(8px);
+  }
+  .hero-media .cap{
+    position:absolute;left:0;right:0;bottom:0;padding:34px 16px 13px;font-size:12.5px;color:var(--ink-dim);
+    background:linear-gradient(to top,rgba(4,7,10,.9),transparent);
+  }
+
+  /* ---------- sections ---------- */
+  section.block{padding:34px 0}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:16px;flex-wrap:wrap}
+  .sec-head h2{font-size:22px;margin:0;letter-spacing:-.01em}
+  .sec-head p{margin:4px 0 0;color:var(--ink-faint);font-size:14px;max-width:62ch}
+  .kicker{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:600}
+
+  /* ---------- viewer ---------- */
+  .viewer{
+    border:1px solid var(--stroke);border-radius:var(--radius);overflow:hidden;
+    background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
+    box-shadow:var(--shadow);
+  }
+  .stage{position:relative;height:min(74vh,660px);min-height:420px;background:#131b22;}
+  model-viewer{width:100%;height:100%;background:transparent;--poster-color:transparent;outline:none}
+  .stage-hud{position:absolute;left:14px;top:14px;display:flex;flex-wrap:wrap;gap:7px;pointer-events:none}
+  .hud-chip{
+    font-size:11.5px;color:#cfe1ec;background:rgba(8,12,17,.62);border:1px solid var(--stroke);
+    padding:5px 9px;border-radius:7px;backdrop-filter:blur(6px);font-variant-numeric:tabular-nums;
+  }
+  .hint{
+    position:absolute;left:50%;bottom:14px;transform:translateX(-50%);
+    font-size:12px;color:var(--ink-faint);background:rgba(8,12,17,.62);border:1px solid var(--stroke);
+    padding:6px 12px;border-radius:999px;backdrop-filter:blur(6px);pointer-events:none;white-space:nowrap;
+    transition:opacity .5s;
+  }
+  .load-veil{
+    position:absolute;inset:0;display:grid;place-items:center;gap:14px;background:rgba(7,11,15,.55);
+    backdrop-filter:blur(2px);transition:opacity .45s;z-index:20;text-align:center;padding:20px;
+  }
+  .load-veil[hidden]{display:none}
+  .load-veil .ring{
+    width:52px;height:52px;border-radius:50%;border:3px solid rgba(255,255,255,.12);border-top-color:var(--teal);
+    animation:spin 1s linear infinite;margin:0 auto 12px;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .load-veil .pct{font-size:13px;color:var(--ink-dim);font-variant-numeric:tabular-nums}
+  .load-veil .err{max-width:44ch;color:#ffc9c0;font-size:13.5px;line-height:1.55}
+  .load-veil code{background:rgba(255,255,255,.09);padding:2px 6px;border-radius:5px;color:#fff;font-size:12.5px}
+
+  .viewer-bar{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    padding:12px 14px;border-top:1px solid var(--stroke);background:rgba(8,12,17,.4);
+  }
+  .viewer:fullscreen{
+    width:100vw;height:100vh;border:0;border-radius:0;
+    display:grid;grid-template-columns:minmax(0,1fr) clamp(190px,20vw,250px);
+    grid-template-rows:minmax(0,1fr) auto;background:#0b1220;
+  }
+  .viewer:fullscreen .stage{grid-column:1;grid-row:1;height:auto;min-height:0}
+  .viewer:fullscreen .steps{
+    grid-column:2;grid-row:1 / 3;display:flex;flex-direction:column;gap:8px;
+    justify-content:center;padding:16px 12px;overflow-y:auto;border-top:0;border-left:1px solid var(--stroke);
+    background:rgba(8,12,17,.82);
+  }
+  .viewer:fullscreen .step{flex:0 0 auto;min-height:0;padding:11px 12px;display:flex;flex-direction:column;justify-content:center}
+  .viewer:fullscreen .step .name{font-size:13.5px}
+  .viewer:fullscreen .step .sub{font-size:10.5px}
+  .viewer:fullscreen .viewer-bar{grid-column:1;grid-row:2}
+  .tool{
+    display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:550;font-family:inherit;
+    color:var(--ink-dim);background:transparent;border:1px solid var(--stroke);padding:8px 12px;border-radius:9px;cursor:pointer;transition:.16s;
+  }
+  .tool:hover{color:var(--ink);border-color:var(--stroke-strong);background:rgba(255,255,255,.05)}
+  .tool[aria-pressed="true"]{color:#04211f;background:var(--teal);border-color:transparent}
+  .tool svg{width:15px;height:15px}
+  .viewer-bar .spacer{margin-left:auto}
+  .exp{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--ink-faint)}
+  .exp input{width:110px;accent-color:var(--teal)}
+
+  /* ---------- gallery ---------- */
+  .gallery{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:14px}
+  .shot{
+    position:relative;padding:0;border:1px solid var(--stroke);border-radius:14px;overflow:hidden;
+    background:var(--bg-soft);cursor:zoom-in;transition:.22s;display:block;width:100%;
+  }
+  .shot:hover{transform:translateY(-2px);border-color:var(--stroke-strong);box-shadow:0 16px 40px rgba(0,0,0,.42)}
+  .shot img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;transition:.35s}
+  .shot:hover img{transform:scale(1.025)}
+  .shot figcaption{
+    position:absolute;left:0;right:0;bottom:0;text-align:left;padding:30px 13px 11px;font-size:12.8px;color:#d7e4ee;
+    background:linear-gradient(to top,rgba(4,7,10,.92),rgba(4,7,10,.35) 60%,transparent);
+  }
+  .shot figcaption b{display:block;font-size:13.5px;font-weight:600;color:#fff}
+  .shot figcaption span{color:var(--ink-faint);font-size:11.5px}
+
+  /* ---------- specs ---------- */
+  .spec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:12px}
+  .spec{border:1px solid var(--stroke);background:var(--panel);border-radius:13px;padding:15px 16px}
+  .spec dt{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:5px}
+  .spec dd{margin:0;font-size:17.5px;font-weight:650;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .spec dd small{font-size:12.5px;font-weight:500;color:var(--ink-dim)}
+  .ext-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+  .ext-list .chip{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:11.5px}
+
+  /* ---------- notes / reference ---------- */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .card{border:1px solid var(--stroke);background:var(--panel);border-radius:var(--radius);padding:20px 22px;min-width:0}
+  .card h3{margin:0 0 8px;font-size:16px}
+  .card p{margin:0;color:var(--ink-dim);font-size:14.5px}
+  .card p + p{margin-top:10px}
+  .card ul{margin:10px 0 0;padding-left:18px;color:var(--ink-dim);font-size:14px}
+  .card li{margin:5px 0}
+  .card li::marker{color:var(--teal)}
+  pre{
+    margin:12px 0 0;padding:13px 14px;border-radius:11px;overflow:auto;
+    background:rgba(0,0,0,.38);border:1px solid var(--stroke);
+    font:12.5px/1.7 ui-monospace,"Cascadia Code",Consolas,monospace;color:#cfe1ec;
+  }
+  pre .c{color:#6f8899}
+
+  footer.site{border-top:1px solid var(--stroke);margin-top:26px;padding:26px 0 40px;color:var(--ink-faint);font-size:13px}
+  footer.site .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between}
+  footer.site code{color:var(--ink-dim);font-size:12px}
+
+  /* ---------- lightbox ---------- */
+  dialog#lightbox{
+    border:1px solid var(--stroke-strong);border-radius:16px;padding:0;background:#0a0f14;color:var(--ink);
+    width:min(1180px,94vw);max-width:none;box-shadow:0 40px 90px rgba(0,0,0,.7);overflow:hidden;
+  }
+  dialog#lightbox::backdrop{background:rgba(3,6,9,.82);backdrop-filter:blur(6px)}
+  dialog#lightbox img{width:100%;max-height:80vh;object-fit:contain;background:#05080b}
+  .lb-bar{display:flex;align-items:center;gap:14px;padding:11px 14px;border-top:1px solid var(--stroke)}
+  .lb-bar .t{font-size:13.5px;color:var(--ink-dim)}
+  .lb-bar button{margin-left:auto;font-family:inherit}
+
+  /* ---------- guided cycle ---------- */
+  .stage.touring .hint{opacity:0}
+  .stage.cycle-paused .marker *,
+  .stage.cycle-paused .scan,
+  .stage.cycle-paused .uv-glow,
+  .stage.cycle-paused .fx-dry *{animation-play-state:paused !important}
+  .tool.primary-tool{
+    background:linear-gradient(140deg,rgba(47,212,196,.24),rgba(47,212,196,.07));
+    border-color:rgba(47,212,196,.45);color:#c9fff8;
+  }
+  .tool.primary-tool:hover{background:linear-gradient(140deg,rgba(47,212,196,.38),rgba(47,212,196,.14));color:#eafffd}
+  .tool.primary-tool[aria-pressed="true"]{background:linear-gradient(140deg,var(--teal),#1ea6a0);color:#04211f}
+
+  .steps{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:8px;
+    padding:12px 14px;border-top:1px solid var(--stroke);background:rgba(8,12,17,.42);
+  }
+  .step{
+    position:relative;text-align:left;font-family:inherit;color:var(--ink-dim);
+    background:rgba(255,255,255,.028);border:1px solid var(--stroke);border-radius:11px;
+    padding:9px 11px 11px;cursor:pointer;transition:.18s;overflow:hidden;
+  }
+  .step:hover{background:rgba(255,255,255,.06);border-color:var(--stroke-strong);transform:translateY(-1px)}
+  .step .idx{font-size:10px;letter-spacing:.14em;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+  .step .name{display:block;font-size:13.5px;font-weight:650;color:var(--ink);margin-top:1px}
+  .step .sub{display:block;font-size:10.8px;color:var(--ink-faint);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .step[aria-pressed="true"]{
+    border-color:rgba(47,212,196,.55);
+    background:linear-gradient(160deg,rgba(47,212,196,.18),rgba(47,212,196,.035));
+    box-shadow:inset 0 0 0 1px rgba(47,212,196,.12);
+  }
+  .step[aria-pressed="true"] .name{color:#d8fffb}
+  .step .prog{position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--teal);transform:scaleX(0);transform-origin:left;opacity:0}
+  .step.playing .prog{opacity:1;animation:stepFill var(--step-ms,7200ms) linear forwards}
+  @keyframes stepFill{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+  .marker{position:absolute;left:50%;top:50%;width:0;height:0;z-index:7;pointer-events:none;opacity:0;transition:opacity .35s}
+  .stage.touring .marker{opacity:1}
+  .marker .core{
+    position:absolute;left:-6px;top:-6px;width:12px;height:12px;border-radius:50%;
+    background:var(--accent,#2fd4c4);box-shadow:0 0 0 4px rgba(255,255,255,.10),0 0 20px var(--accent,#2fd4c4);
+  }
+  .marker .ring{
+    position:absolute;left:-26px;top:-26px;width:52px;height:52px;border-radius:50%;
+    border:1px solid var(--accent,#2fd4c4);opacity:0;animation:markerRing 2.6s ease-out infinite;
+  }
+  .marker .ring:nth-of-type(2){animation-delay:1.3s}
+  @keyframes markerRing{0%{transform:scale(.35);opacity:.85}70%{opacity:.12}100%{transform:scale(1.55);opacity:0}}
+  .marker .tag{
+    position:absolute;left:50%;top:20px;transform:translateX(-50%);white-space:nowrap;
+    display:inline-flex;align-items:center;gap:7px;
+    font-size:12px;font-weight:600;color:#eafcff;
+    background:rgba(6,12,16,.84);border:1px solid rgba(255,255,255,.16);
+    padding:5px 10px;border-radius:999px;backdrop-filter:blur(8px);box-shadow:0 8px 20px rgba(0,0,0,.38);
+  }
+  .marker .leds{display:none;gap:4px}
+  .stage[data-step="3"][data-phase="ready"].touring .marker .leds{display:inline-flex}
+  .marker .leds i{width:5px;height:5px;border-radius:50%;animation:ledBlink 1.8s steps(1,end) infinite}
+  .marker .leds i:nth-child(1){background:#ff5d55;animation-delay:0s}
+  .marker .leds i:nth-child(2){background:#ffc247;animation-delay:.4s}
+  .marker .leds i:nth-child(3){background:#43e08a;animation-delay:.8s}
+  @keyframes ledBlink{0%,62%{opacity:1}63%,100%{opacity:.2}}
+  .stage[data-step="1"]{--accent:#7fe8de}
+  .stage[data-step="2"]{--accent:#43d7ff}
+  .stage[data-step="3"]{--accent:#a99bff}
+  .stage[data-step="4"]{--accent:#74c8ff}
+  .stage[data-step="5"]{--accent:#43e08a}
+
+  /* plain backdrop: the per-step glow tints are kept out of the stage so the
+     hanger sits on one flat colour (re-enable by restoring the gradients) */
+  .cycle-light{position:absolute;inset:0;z-index:3;opacity:0;pointer-events:none;transition:opacity 1s ease;background:none}
+  .stage.touring .cycle-light{opacity:1}
+  .stage[data-step="1"]{--cycle-light:rgba(127,232,222,.10)}
+  .stage[data-step="2"]{--cycle-light:rgba(67,215,255,.13)}
+  .stage[data-step="3"]{--cycle-light:rgba(169,155,255,.11)}
+  .stage[data-step="4"]{--cycle-light:rgba(116,200,255,.16)}
+  .stage[data-step="5"]{--cycle-light:rgba(67,224,138,.12)}
+
+  /* Dry step: vent-seam air sheet, entrained haze, fast streaks, wash across the fabric */
+  .fx-dry{position:absolute;inset:0;z-index:5;opacity:0;pointer-events:none;overflow:hidden;transition:opacity .45s ease}
+  .stage[data-step="4"][data-phase="fan"].touring .fx-dry,
+  .stage[data-step="4"][data-phase="air"].touring .fx-dry,
+  .stage[data-step="4"][data-phase="uv"].touring .fx-dry,
+  .stage[data-step="4"][data-phase="steady"].touring .fx-dry{opacity:1}
+  .fx-svg{display:block;width:100%;height:100%}
+  .fx-scale{transform-box:view-box;transform-origin:50% 50%;transform:scale(var(--fx-x,1),var(--fx-y,1))}
+  /* the Dry camera glides to a wider orbit at 5.7s; follow it so the jets stay on the vents */
+  .fx-drift{transform-box:view-box;transform-origin:0 0;transition:none}
+  .stage[data-step="4"][data-fx="end"] .fx-drift{
+    transform:matrix(1.1106, .2119, .0593, 1.0084, -8.5932, -10.9722);
+    transition:transform .95s cubic-bezier(.33,0,.25,1);
+  }
+
+  /* vent seam: air sliding along the underside slots, with a soft sheen around it */
+  .fx-rim{
+    fill:none;stroke:url(#fxRimL);stroke-width:1.1;stroke-linecap:round;vector-effect:non-scaling-stroke;
+    stroke-dasharray:1.6 2.6;animation:fxSeamFlow .95s linear infinite;
+  }
+  .fx-rim.r{stroke:url(#fxRimR)}
+  .fx-rim-soft{
+    fill:none;stroke:rgba(198,240,255,.5);stroke-width:2.6;stroke-linecap:round;
+    vector-effect:non-scaling-stroke;filter:blur(1.7px);
+  }
+  .fx-plenum{fill:url(#fxVentGlow);animation:fxBreath 5.4s ease-in-out infinite}
+  .fx-plenum-rim{fill:none;stroke:rgba(226,250,255,.45);stroke-width:.8;vector-effect:non-scaling-stroke;filter:blur(.5px)}
+  .fx-speck{fill:#f2feff;animation:fxSpeck 3.4s ease-in-out infinite}
+
+  .fx-duct{opacity:0;transition:opacity .6s ease}
+
+  /* three layers: entrained plume, then broken fast streaks */
+  .fx-streams,.fx-motes{opacity:0;transition:opacity .7s ease}
+  .fx-plumes{filter:blur(1.3px)}
+  .fx-plume{fill:url(#fxPlume);opacity:calc(var(--a,.7) * .85)}
+  .fx-jet{animation:fxAirSway var(--swd,4.4s) ease-in-out infinite;animation-delay:var(--swo,0s)}
+  .fx-core{
+    fill:none;stroke:url(#fxStream);stroke-width:1;stroke-linecap:round;vector-effect:non-scaling-stroke;
+    stroke-dasharray:2.6 7.4;opacity:calc(var(--a,.7) * .8);
+    animation:fxAirFlow var(--sp,.3s) linear infinite;animation-delay:var(--d1,0s);
+  }
+  .fx-core.b{
+    stroke-width:1.5;stroke-dasharray:6 13;opacity:calc(var(--a,.7) * .3);
+    animation-name:fxAirFlowB;animation-duration:calc(var(--sp,.3s) * 2.4);animation-delay:var(--d2,0s);
+  }
+  .fx-deflect{
+    fill:none;stroke:rgba(206,242,255,.42);stroke-width:1.5;stroke-linecap:round;vector-effect:non-scaling-stroke;
+    stroke-dasharray:2.2 4.6;opacity:.55;filter:blur(.4px);
+    animation:fxDeflect 1.1s linear infinite;animation-delay:var(--dd,0s);
+  }
+  .fx-spill{
+    fill:none;stroke:rgba(198,238,255,.34);stroke-width:2.6;stroke-linecap:round;
+    stroke-dasharray:1.4 5;opacity:.5;filter:blur(1.3px);
+    animation:fxSpill 2.2s linear infinite;animation-delay:var(--sd,0s);
+  }
+  .fx-mote{fill:#f0fcff;opacity:0;animation:fxMoteFade var(--md,3s) linear infinite;animation-delay:var(--mb,0s)}
+  .fx-svg.fx-no-smil .fx-motes{display:none}
+  /* air piling up against the fabric */
+  .fx-wash{opacity:0;transition:opacity .9s ease}
+  .fx-sheen-layer{filter:blur(2.8px)}
+  .fx-sheen{fill:url(#fxSheen);animation:fxSheenBreath 6.6s ease-in-out infinite}
+  .fx-sheen.b{animation-duration:8.4s}
+
+  .stage[data-step="4"][data-phase="fan"].touring .fx-duct{opacity:.45}
+  .stage[data-step="4"][data-phase="air"].touring .fx-duct,
+  .stage[data-step="4"][data-phase="uv"].touring .fx-duct,
+  .stage[data-step="4"][data-phase="steady"].touring .fx-duct{opacity:1}
+  .stage[data-step="4"][data-phase="air"].touring .fx-wash,
+  .stage[data-step="4"][data-phase="uv"].touring .fx-wash,
+  .stage[data-step="4"][data-phase="steady"].touring .fx-wash{opacity:.55}
+  .stage[data-step="4"][data-phase="air"].touring .fx-streams,
+  .stage[data-step="4"][data-phase="uv"].touring .fx-streams,
+  .stage[data-step="4"][data-phase="steady"].touring .fx-streams,
+  .stage[data-step="4"][data-phase="air"].touring .fx-motes,
+  .stage[data-step="4"][data-phase="uv"].touring .fx-motes,
+  .stage[data-step="4"][data-phase="steady"].touring .fx-motes{opacity:1}
+
+  @keyframes fxSeamFlow{to{stroke-dashoffset:-4.2}}
+  @keyframes fxBreath{0%,100%{opacity:.62}50%{opacity:1}}
+  @keyframes fxSpeck{0%,100%{opacity:.1}45%{opacity:.66}65%{opacity:.3}}
+  @keyframes fxAirFlow{to{stroke-dashoffset:-10}}
+  @keyframes fxAirFlowB{to{stroke-dashoffset:-19}}
+  @keyframes fxAirSway{0%,100%{transform:translateX(calc(var(--swa,.25px) * -1))}50%{transform:translateX(var(--swa,.25px))}}
+  @keyframes fxDeflect{to{stroke-dashoffset:-6.8}}
+  @keyframes fxSpill{to{stroke-dashoffset:-6.4}}
+  @keyframes fxSheenBreath{0%,100%{opacity:.55}50%{opacity:1}}
+  @keyframes fxMoteFade{0%{opacity:0}14%{opacity:.72}70%{opacity:.4}100%{opacity:0}}
+  .uv-glow{
+    position:absolute;inset:0;z-index:4;opacity:0;transition:opacity .5s;pointer-events:none;
+    background:none;
+  }
+  .stage[data-step="4"][data-phase="uv"].touring .uv-glow,
+  .stage[data-step="4"][data-phase="steady"].touring .uv-glow{opacity:1;animation:uvPulse 2.8s ease-in-out infinite}
+  @keyframes uvPulse{0%,100%{filter:brightness(.85)}50%{filter:brightness(1.4)}}
+  .scan{
+    position:absolute;left:50%;top:50%;width:156px;height:156px;z-index:4;opacity:0;pointer-events:none;
+    transform:translate(-50%,-50%);border:1px solid rgba(67,215,255,.22);border-radius:50%;
+    background:radial-gradient(circle,rgba(67,215,255,.07),transparent 64%);transition:opacity .3s,border-color .3s;
+  }
+  .scan::before{
+    content:"";position:absolute;inset:13px;border:1px solid rgba(67,215,255,.22);border-radius:50%;
+    box-shadow:inset 0 0 22px rgba(67,215,255,.08);
+  }
+  .scan::after{
+    content:"";position:absolute;inset:5px;border-radius:50%;
+    background:conic-gradient(from 0deg,transparent 0 76%,rgba(67,215,255,.04) 82%,rgba(67,215,255,.72) 99%,transparent 100%);
+    -webkit-mask:radial-gradient(circle,transparent 0 18%,#000 20% 70%,transparent 72%);mask:radial-gradient(circle,transparent 0 18%,#000 20% 70%,transparent 72%);
+  }
+  .stage[data-step="2"][data-phase="sampling"].touring .scan{opacity:1}
+  .stage[data-step="2"][data-phase="sampling"].touring .scan::after{animation:sensorSweep 1.35s linear infinite}
+  .stage[data-step="2"][data-phase="locked"].touring .scan{opacity:.82;border-color:rgba(67,215,255,.7);animation:sensorLock .7s ease-out both}
+  .stage[data-step="2"][data-phase="locked"].touring .scan::after{opacity:0}
+  @keyframes sensorSweep{to{transform:rotate(360deg)}}
+  @keyframes sensorLock{0%{transform:translate(-50%,-50%) scale(1.12);filter:brightness(1.8)}100%{transform:translate(-50%,-50%) scale(.82);filter:brightness(1)}}
+
+  .tour-caption{
+    position:absolute;left:14px;bottom:14px;z-index:8;width:min(360px,calc(100% - 28px));
+    padding:13px 15px;border-radius:13px;border:1px solid rgba(255,255,255,.14);
+    background:linear-gradient(150deg,rgba(8,13,18,.94),rgba(8,13,18,.76));
+    backdrop-filter:blur(10px);opacity:0;transform:translateY(10px);transition:.35s;
+    pointer-events:none;box-shadow:0 12px 30px rgba(0,0,0,.42);
+  }
+  .stage.touring .tour-caption{opacity:1;transform:none}
+  .tc-top{display:flex;align-items:baseline;gap:9px}
+  .tc-step{font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent,#2fd4c4);font-weight:650}
+  .tc-name{font-size:16px;font-weight:650;color:#fff}
+  .tour-caption p{margin:5px 0 0;font-size:12.8px;line-height:1.5;color:#a9bdcb}
+  .telemetry{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+  .telemetry span{font:10.5px/1 ui-monospace,"Cascadia Code",Consolas,monospace;color:#cce4eb;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);padding:5px 7px;border-radius:6px;font-variant-numeric:tabular-nums}
+
+  @media (max-width:960px){
+    .hero{grid-template-columns:1fr;gap:26px;padding-top:34px}
+    .hero-media{order:-1}
+    .gallery{grid-template-columns:1fr 1fr}
+    .gallery .shot:first-child{grid-column:1/-1}
+    .cols{grid-template-columns:minmax(0,1fr)}
+    nav.site-nav{display:none}
+    .stage{height:62vh;min-height:380px}
+    .hint{display:none}
+    .steps{grid-template-columns:repeat(5,minmax(124px,1fr));overflow-x:auto;scrollbar-width:thin}
+    .tour-caption{left:10px;right:10px;bottom:10px;width:auto;padding:10px 12px}
+    .tour-caption p{font-size:12px}
+    .marker .tag{font-size:11px;top:18px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{transition:none !important;animation:none !important}
+    .fx-dry,.scan{display:none}
+  }
+</style>
+
+<!-- ============================================================
+     Business redesign — site chrome only.
+     The 3D preview (stage, model-viewer, cycle HUD, step buttons
+     and viewer bar) keeps the styles defined above untouched.
+     ============================================================ -->
+<style>
+  :root{
+    --paper:#ffffff;
+    --navy:#0f172a;
+    --slate:#64748b;
+    --slate-2:#94a3b8;
+    --line:#e8ecf2;
+    --plate:#f6f8fb;
+    --brand:#3555d6;
+    --brand-2:#2743b8;
+    --brand-soft:#eef2ff;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  }
+  html{scroll-padding-top:84px}
+  section[id]{scroll-margin-top:0}
+  body{
+    background:var(--paper);
+    color:var(--navy);
+    font:400 16px/1.7 var(--sans);
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--brand-soft);color:var(--navy)}
+
+  /* ---------- header ---------- */
+  header.site{
+    background:rgba(255,255,255,.92);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(12px);
+  }
+  .site-inner{display:flex;align-items:center;gap:24px;height:68px;padding:0}
+  .brand{
+    display:grid;grid-template-columns:42px auto;grid-template-rows:auto auto;
+    column-gap:10px;row-gap:2px;align-items:center;text-decoration:none;color:var(--navy);line-height:1.05;
+  }
+  .brand-logo{grid-row:1 / 3;width:42px;height:42px;object-fit:contain;border-radius:50%;display:block}
+  .brand-name{grid-column:2;font:500 1.35rem/1.1 var(--serif);letter-spacing:-.01em;color:var(--navy)}
+  .brand-name em{font-style:normal;color:var(--brand)}
+  .brand-sub{font:600 .58rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
+  nav.site-nav{margin-left:auto;gap:2px}
+  nav.site-nav a{
+    position:relative;color:var(--slate);font-size:.83rem;letter-spacing:.01em;
+    padding:8px 12px;border:0;border-radius:0;background:transparent;
+  }
+  nav.site-nav a::after,.btn-header::after{
+    content:"";position:absolute;left:12px;right:12px;bottom:3px;height:2px;border-radius:999px;
+    background:var(--brand);transform:scaleX(0);transform-origin:center;
+    transition:transform .80s cubic-bezier(.16,1,.3,1);
+  }
+  nav.site-nav a:hover,nav.site-nav a:focus-visible{color:var(--navy);background:transparent}
+  nav.site-nav a:hover::after,nav.site-nav a:focus-visible::after,
+  .btn-header:hover::after,.btn-header:focus-visible::after{transform:scaleX(1)}
+  .btn-header{position:relative;margin-left:8px;padding:10px 18px;font-size:.82rem}
+  .btn-header::after{left:18px;right:18px;bottom:6px;background:currentColor}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:12px 22px;border-radius:999px;border:1px solid var(--line);
+    background:#fff;color:var(--navy);font:500 .9rem/1 var(--sans);
+    text-decoration:none;cursor:pointer;
+    transition:background .18s,color .18s,border-color .18s,box-shadow .18s;
+  }
+  .btn:hover{transform:none;background:var(--plate);border-color:#d8dee9;box-shadow:none}
+  .btn.primary{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:none}
+  .btn.primary:hover{background:#1e293b;border-color:#1e293b;box-shadow:0 10px 24px rgba(15,23,42,.16)}
+  .btn svg{width:15px;height:15px;flex:none}
+
+  /* ---------- hero ---------- */
+  .hero{display:block;padding:84px 0 72px}
+  .hero-inner{display:grid;grid-template-columns:1.06fr .94fr;gap:64px;align-items:center}
+  .hero .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;margin:0;padding:0;
+    border:0;border-radius:0;background:none;
+    font:600 .72rem/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--brand);
+  }
+  .hero .eyebrow::before{content:"";width:28px;height:1px;background:var(--brand);flex:none}
+  .hero h1{
+    font:500 clamp(2.5rem,5.2vw,4rem)/1.05 var(--serif);
+    letter-spacing:-.022em;color:var(--navy);margin:20px 0 0;
+  }
+  .hero h1 span{background:none;color:var(--brand);-webkit-text-fill-color:currentColor}
+  .hero .lede{color:var(--slate);max-width:54ch;margin:20px 0 0;font-size:1.05rem;line-height:1.75}
+  .hero .cta{margin-top:30px}
+  .hero .chips{display:flex;flex-wrap:wrap;gap:14px 0;margin-top:40px;padding-top:22px;border-top:1px solid var(--line)}
+  .hero .chip{
+    display:inline-flex;align-items:baseline;gap:6px;
+    margin:0 22px 0 0;padding:0 22px 0 0;
+    border:0;border-right:1px solid var(--line);border-radius:0;background:none;
+    font-size:.8rem;color:var(--slate);letter-spacing:.01em;font-variant-numeric:tabular-nums;
+  }
+  .hero .chip:last-child{margin-right:0;padding-right:0;border-right:0}
+  .hero .chip b{font:600 1rem/1 var(--sans);color:var(--navy);font-weight:600}
+  .hero-media{
+    margin:0;padding:12px;background:var(--plate);border:1px solid var(--line);
+    border-radius:22px;box-shadow:0 24px 60px rgba(15,23,42,.08);
+  }
+  .hero-media img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:14px}
+  .hero-media .figcap{display:flex;justify-content:space-between;gap:12px;padding:14px 6px 2px;font-size:.78rem;color:var(--slate)}
+  .hero-media .figcap b{color:var(--navy);font-weight:600}
+  .hero-media .tag,.hero-media .cap{display:none}
+
+  /* ---------- section rhythm ---------- */
+  section.block{padding:80px 0}
+  section.block + section.block{border-top:1px solid var(--line)}
+  section.panel{background:var(--plate)}
+  /* the preview chrome (steps, tool bar) was authored for a dark frame */
+  .viewer{background:#0b1220;border-color:#1b2534;box-shadow:0 30px 70px rgba(15,23,42,.16)}
+  .sec-head{display:block;margin-bottom:42px}
+  .sec-head h2{
+    font:500 clamp(1.85rem,3.4vw,2.6rem)/1.15 var(--serif);
+    letter-spacing:-.015em;color:var(--navy);margin:0 0 14px;
+  }
+  .sec-head p{color:var(--slate);font-size:1rem;line-height:1.7;max-width:66ch;margin:0}
+  .kicker{display:block;font:600 .72rem/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--brand);margin:0 0 16px}
+  .sec-head .kicker{color:var(--brand);margin:0 0 16px}
+  .lead{color:var(--slate);max-width:64ch;margin:0 0 42px;font-size:1rem;line-height:1.7}
+  .note{font-size:.8rem;line-height:1.65;color:var(--slate);margin:18px 0 0;max-width:80ch}
+
+  /* ---------- problem ---------- */
+  .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+  .problem{border-top:1px solid var(--line);padding-top:20px}
+  .problem .num,.flow-step .num,.mode .num{
+    display:block;font:600 .72rem/1 var(--sans);letter-spacing:.14em;color:var(--brand);
+  }
+  .problem h3{font:500 1.22rem/1.3 var(--serif);margin:10px 0 8px;color:var(--navy)}
+  .problem p{margin:0;color:var(--slate);font-size:.95rem;line-height:1.7}
+
+  /* ---------- how it works ---------- */
+  .flow-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:28px}
+  .flow-step{display:flex;flex-direction:column;align-items:flex-start;border-top:1px solid var(--line);padding-top:18px}
+  .flow-step h3{font:500 1.16rem/1.25 var(--serif);margin:10px 0 8px;color:var(--navy)}
+  .flow-step p{margin:0;color:var(--slate);font-size:.92rem;line-height:1.65;flex:1}
+  .flow-jump{
+    display:inline-flex;align-items:center;gap:5px;margin-top:14px;padding:0;
+    background:none;border:0;cursor:pointer;font:500 .8rem/1.4 var(--sans);color:var(--brand);
+  }
+  .flow-jump:hover{color:var(--brand-2);text-decoration:underline;text-underline-offset:3px}
+  .flow-note{margin:34px 0 0;padding-top:22px;border-top:1px solid var(--line);font-size:.85rem;line-height:1.65;color:var(--slate)}
+
+  /* ---------- modes ---------- */
+  .mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .mode{background:var(--plate);border:1px solid var(--line);border-radius:14px;padding:24px 22px}
+  .mode h3{font:500 1.15rem/1.25 var(--serif);margin:8px 0 6px;color:var(--navy)}
+  .mode p{margin:0;color:var(--slate);font-size:.92rem;line-height:1.6}
+  .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:52px;padding-top:36px;border-top:1px solid var(--line)}
+  .feature h3{font:500 1.12rem/1.3 var(--serif);margin:0 0 6px;color:var(--navy)}
+  .feature p{margin:0;color:var(--slate);font-size:.94rem;line-height:1.65}
+
+  /* ---------- tables ---------- */
+  .table-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px 24px 4px;overflow:hidden}
+  .table-scroll{overflow-x:auto}
+  table.data{width:100%;border-collapse:collapse;min-width:620px}
+  table.data th{
+    font:600 .68rem/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+    color:var(--slate-2);text-align:left;padding:18px 18px 12px 0;border-bottom:1px solid var(--line);vertical-align:bottom;
+  }
+  table.data td{padding:16px 18px 16px 0;border-bottom:1px solid var(--line);color:var(--navy);font-size:.94rem;line-height:1.55;vertical-align:top}
+  table.data tr:last-child td{border-bottom:0}
+  table.data td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+  table.data td.muted{color:var(--slate)}
+
+  /* ---------- gallery ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .shot{
+    position:relative;display:flex;flex-direction:column;width:100%;padding:0;
+    background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;cursor:zoom-in;text-align:left;
+    transition:transform .2s,border-color .2s,box-shadow .2s;
+  }
+  .shot:hover{transform:translateY(-2px);border-color:#cfd7e6;box-shadow:0 18px 40px rgba(15,23,42,.08)}
+  .shot img{width:100%;height:auto;flex:none;object-fit:cover;transition:transform .35s}
+  .shot:hover img{transform:scale(1.02)}
+  .shot figcaption{
+    position:static;padding:14px 16px 16px;background:#fff;border-top:1px solid var(--line);
+    color:var(--slate);font-size:.8rem;line-height:1.5;
+  }
+  .shot figcaption b{display:block;margin-bottom:2px;font-size:.9rem;font-weight:600;color:var(--navy)}
+  .shot figcaption span{font-size:.78rem;color:var(--slate)}
+  .shot-lead{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,2fr) minmax(240px,.8fr);align-items:stretch}
+  .shot-lead img{width:100%;height:100%;max-height:480px;object-fit:contain;background:var(--plate)}
+  .shot-lead figcaption{display:flex;flex-direction:column;justify-content:center;padding:28px;border-top:0;border-left:1px solid var(--line)}
+  .shot-lead figcaption b{font:500 1.35rem/1.25 var(--serif);margin:0 0 8px;color:var(--navy)}
+  .shot-lead figcaption span{font-size:.84rem;line-height:1.65;max-width:34ch}
+  .shot-diagram img{width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;background:#edf5f8}
+  .shot-diagram figcaption{display:block}
+  .shot-diagram figcaption b{margin:0 0 3px;white-space:normal}
+
+  /* ---------- specs ---------- */
+  .spec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .spec{background:var(--plate);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px}
+  .spec dt{font:600 .64rem/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--slate);margin-bottom:7px}
+  .spec dd{margin:0;font:600 1.15rem/1.2 var(--sans);color:var(--navy);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+  .spec dd small{font-size:.72rem;font-weight:500;color:var(--slate)}
+  .ext-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+  .ext-list .chip{
+    font:500 .7rem/1.4 ui-monospace,"Cascadia Code",Consolas,monospace;
+    color:var(--slate);background:var(--plate);border:1px solid var(--line);border-radius:6px;padding:5px 9px;
+  }
+
+  /* ---------- details ---------- */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px;min-width:0}
+  .card h3{font:500 1.15rem/1.3 var(--serif);color:var(--navy);margin:0 0 10px}
+  .card p{color:var(--slate);font-size:.94rem;line-height:1.7;margin:0}
+  .card p + p{margin-top:10px}
+  .card ul{margin:10px 0 0;padding-left:18px;color:var(--slate);font-size:.92rem;line-height:1.7}
+  .card li{margin:6px 0}
+  .card li::marker{color:var(--brand)}
+  .card code{background:var(--plate);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:.82em}
+  pre{
+    margin:14px 0 0;padding:14px 16px;border-radius:10px;overflow:auto;
+    background:var(--plate);border:1px solid var(--line);color:var(--navy);
+    font:12px/1.7 ui-monospace,"Cascadia Code",Consolas,monospace;
+  }
+  pre .c{color:var(--slate-2)}
+
+  /* ---------- team ---------- */
+  .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:36px 32px}
+  .person{border-top:1px solid var(--line);padding-top:18px}
+  .person h3{font:500 1.12rem/1.3 var(--serif);color:var(--navy);margin:0 0 4px}
+  .person small{display:block;margin-bottom:8px;font:600 .68rem/1.4 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+  .person p{margin:0;color:var(--slate);font-size:.9rem;line-height:1.65}
+
+  /* ---------- contact ---------- */
+  .contact-band{background:var(--navy);color:#fff;padding:88px 0;text-align:center}
+  .contact-band .kicker{color:#93a8ff;margin-bottom:18px}
+  .contact-band h2{
+    font:500 clamp(2rem,4vw,3rem)/1.12 var(--serif);letter-spacing:-.02em;
+    color:#fff;margin:0 auto 18px;max-width:22ch;
+  }
+  .contact-band p{color:#a9b4c9;max-width:54ch;margin:0 auto 32px;font-size:1rem;line-height:1.7}
+  .contact-band .cta{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+  .contact-band .btn{background:#fff;color:var(--navy);border-color:#fff}
+  .contact-band .btn:hover{background:#eef2f8;border-color:#eef2f8}
+  .contact-band .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.32)}
+  .contact-band .btn.ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5)}
+  .contact-meta{margin-top:28px;font-size:.76rem;letter-spacing:.04em;color:#7f8da6}
+  .contact-band .contact-meta{margin-top:28px;font-size:.76rem;letter-spacing:.04em;color:#9aa8bf}
+
+  /* ---------- footer ---------- */
+  footer.site{background:#fff;border-top:1px solid var(--line);margin-top:0;padding:30px 0 40px;color:var(--slate);font-size:.8rem}
+  footer.site .wrap{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;align-items:center}
+  footer.site code{color:var(--slate);font-size:.72rem}
+  .footer-brand{font:500 1rem/1.2 var(--serif);color:var(--navy);margin-right:10px}
+
+  /* ---------- lightbox ---------- */
+  dialog#lightbox{
+    background:#fff;color:var(--navy);border:1px solid var(--line);
+    border-radius:16px;box-shadow:0 40px 90px rgba(15,23,42,.28);
+  }
+  dialog#lightbox::backdrop{background:rgba(15,23,42,.55);backdrop-filter:blur(4px)}
+  dialog#lightbox img{background:var(--plate)}
+  .lb-bar{border-top:1px solid var(--line)}
+  .lb-bar .t{color:var(--slate);font-size:.85rem}
+  #lightbox .tool{
+    padding:8px 14px;border:1px solid var(--line);background:#fff;color:var(--slate);
+    font:500 .8rem/1 var(--sans);
+  }
+  #lightbox .tool:hover{color:var(--navy);background:var(--plate);border-color:#cfd7e6}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1024px){
+    .hero-inner{gap:40px}
+    .problem-grid{gap:28px}
+    .flow-grid{grid-template-columns:repeat(3,1fr)}
+    .mode-grid{grid-template-columns:repeat(2,1fr)}
+    .feature-grid{gap:28px}
+    .team-grid{grid-template-columns:repeat(3,1fr)}
+  }
+  @media (max-width:960px){
+    .gallery{grid-template-columns:1fr 1fr}
+    .gallery .shot:first-child{grid-column:1/-1}
+  }
+  @media (max-width:860px){
+    .hero{padding:60px 0 56px}
+    .hero-inner{grid-template-columns:1fr;gap:36px}
+    .hero-media{order:2}
+    section.block{padding:60px 0}
+    .problem-grid{grid-template-columns:1fr}
+    .mode-grid{grid-template-columns:1fr 1fr}
+    .feature-grid{grid-template-columns:1fr}
+    .cols{grid-template-columns:1fr}
+    .team-grid{grid-template-columns:1fr 1fr}
+    .contact-band{padding:72px 0}
+  }
+  @media (max-width:640px){
+    .wrap{width:calc(100% - 36px)}
+    nav.site-nav{display:none}
+    .site-inner{height:60px;gap:16px}
+    .brand-name{font-size:1.2rem}
+    .brand{grid-template-columns:36px auto;column-gap:8px}
+    .brand-logo{width:36px;height:36px}
+    .brand-sub{font-size:.54rem}
+    .btn-header{padding:9px 14px}
+    .hero .chips{gap:12px 0}
+    .hero .chip{margin-right:14px;padding-right:14px;font-size:.75rem}
+    .hero .chip b{font-size:.92rem}
+    .flow-grid{grid-template-columns:1fr}
+    .mode-grid{grid-template-columns:1fr}
+    .team-grid{grid-template-columns:1fr}
+    .gallery{grid-template-columns:1fr}
+    .gallery .shot:first-child{grid-column:auto}
+    .shot-lead{grid-template-columns:1fr}
+    .shot-lead figcaption{padding:16px 18px 18px;border-top:1px solid var(--line);border-left:0}
+    .shot-lead figcaption b{font-size:1.05rem;margin-bottom:4px}
+    .shot-diagram figcaption{display:block}
+    .shot-diagram figcaption b{margin-bottom:3px;white-space:normal}
+    .sec-head h2{font-size:1.9rem}
+    .table-card{padding:6px 16px 2px}
+    .spec-grid{grid-template-columns:1fr 1fr}
+    .contact-band{padding:64px 0}
+    .contact-band h2{font-size:2rem}
+    .hero-media{padding:8px;border-radius:18px}
+    .hero-media img{border-radius:11px}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap site-inner">
+    <a class="brand" href="#top" aria-label="AeroFresh by Alt+F5 Technologies">
+      <img class="brand-logo" src="assets/aerofresh-logo.png" alt="">
+      <span class="brand-name">Aero<em>Fresh</em></span>
+      <span class="brand-sub">Smart Towel Hanger · Alt+F5</span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#problem">Problem</a>
+      <a href="#how">How it works</a>
+      <a href="#market">Market</a>
+      <a href="#viewer">3D Model</a>
+      <a href="#team">Team</a>
+    </nav>
+    <a class="btn btn-header" href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <h1>Fresh Towels.<br><span>Smarter Hospitality.</span></h1>
+        <p class="lede">
+          AeroFresh is a towel hanger with a built-in dryer. 
+          It senses how damp the towel is and blows air through 
+          the towel to dry it. Guests get fresh towels, and hotel staff do less work.
+        </p>
+        <div class="chips">
+        </div>
+      </div>
+      <figure class="hero-media">
+        <img src="Smart_Drying_Hanger/renders/Smart_Drying_Hanger_Preview.png" alt="AeroFresh smart towel hanger studio render">
+        <figcaption class="figcap">
+
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="block" id="problem">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">The Problem Statement </p>
+        <h2>Hotel towels stay damp after use, and a regular towel rack only holds them. It does not dry them.</h2>
+      </div>
+      <div class="problem-grid">
+        <div class="problem">
+          <span class="num">01</span>
+          <h3>Guests</h3>
+          <p>Guests want fresh and comfortable towels during their stay.</p>
+        </div>
+        <div class="problem">
+          <span class="num">02</span>
+          <h3>Hotel staff</h3>
+          <p>Hotel staff handle many towels every day, which adds to their work.</p>
+        </div>
+        <div class="problem">
+          <span class="num">03</span>
+          <h3>Regular racks</h3>
+          <p>Regular racks cannot sense or dry the towels.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3D VIEWER -->
+  <section class="block" id="viewer">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Live product model · guided cycle</p>
+        <h2>See every step in 3D</h2>
+        <p>This is the 3D Model to View The product.</p>
+      </div>
+
+      <div class="viewer">
+      <div class="stage" id="stage">
+        <model-viewer
+          id="mv"
+          src="Smart_Drying_Hanger/Smart_Drying_Hanger.glb"
+          poster="Smart_Drying_Hanger/renders/Smart_Drying_Hanger_Preview.png"
+          alt="Smart drying hanger 3D model"
+          camera-controls
+          touch-action="pan-y"
+          auto-rotate
+          auto-rotate-delay="900"
+          rotation-per-second="16deg"
+          environment-image="neutral"
+          shadow-intensity="0.85"
+          shadow-softness="0.8"
+          exposure="1.05"
+          tone-mapping="aces"
+          camera-orbit="-34deg 68deg 95%"
+          min-camera-orbit="auto 4deg auto"
+          max-camera-orbit="auto 94deg auto"
+          min-field-of-view="16deg"
+          max-field-of-view="50deg"
+          interpolation-decay="10"
+          interaction-prompt="none"
+          loading="eager"
+          ar
+          ar-modes="webxr scene-viewer quick-look">
+          <div slot="progress-bar"></div>
+        </model-viewer>
+
+        <!-- guided-cycle effects -->
+        <div class="uv-glow" aria-hidden="true"></div>
+        <div class="scan" aria-hidden="true"></div>
+        <div class="fx-dry" id="fxDry" aria-hidden="true">
+                                        <svg class="fx-svg" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">
+            <defs>
+              <radialGradient id="fxVentGlow">
+                <stop offset="0" stop-color="#eafcff" stop-opacity=".38"/>
+                <stop offset=".4" stop-color="#a8e2ff" stop-opacity=".14"/>
+                <stop offset="1" stop-color="#7cc8ff" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="fxSheen">
+                <stop offset="0" stop-color="#dff6ff" stop-opacity=".13"/>
+                <stop offset=".55" stop-color="#a9e6ff" stop-opacity=".07"/>
+                <stop offset="1" stop-color="#7fd0ff" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="fxPlume" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffffff" stop-opacity=".3"/>
+                <stop offset=".18" stop-color="#e8fbff" stop-opacity=".22"/>
+                <stop offset=".62" stop-color="#bfeeff" stop-opacity=".15"/>
+                <stop offset="1" stop-color="#8fdcff" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="fxStream" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffffff" stop-opacity=".62"/>
+                <stop offset=".1" stop-color="#eefcff" stop-opacity=".5"/>
+                <stop offset=".4" stop-color="#c4efff" stop-opacity=".3"/>
+                <stop offset=".72" stop-color="#a2e6ff" stop-opacity=".24"/>
+                <stop offset="1" stop-color="#88d8ff" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="fxRimL" gradientUnits="userSpaceOnUse" x1="44.75" y1="52.03" x2="31.86" y2="69.63">
+                <stop offset="0" stop-color="#f4feff" stop-opacity=".62"/>
+                <stop offset=".55" stop-color="#c9f0ff" stop-opacity=".34"/>
+                <stop offset="1" stop-color="#9adcff" stop-opacity=".12"/>
+              </linearGradient>
+              <linearGradient id="fxRimR" gradientUnits="userSpaceOnUse" x1="55.27" y1="49.86" x2="66.35" y2="60.9">
+                <stop offset="0" stop-color="#f4feff" stop-opacity=".62"/>
+                <stop offset=".55" stop-color="#c9f0ff" stop-opacity=".34"/>
+                <stop offset="1" stop-color="#9adcff" stop-opacity=".12"/>
+              </linearGradient>
+
+              <!-- centre lines the streaks and dust follow -->
+              <path id="fxJc0" d="M50 48.29C50.75 51.29 51.55 56.49 51.3 62.29C50.6 75.9 48.5 85.46 47.4 92.54"/>
+              <path id="fxJc1" d="M50 48.29C50 51.29 50 56.49 50 62.29C50 77.19 50 87.86 50 95.4"/>
+              <path id="fxJc2" d="M50 48.29C49.25 51.29 48.45 56.49 48.7 62.29C49.42 75.85 51.6 85.37 52.7 92.43"/>
+              <path id="fxJl0" d="M44.75 52.03C45.5 55.03 46.3 60.23 46.05 66.03C45.25 78.44 42.7 86.95 41.6 93.6"/>
+              <path id="fxJl1" d="M41.5 56.53C42.25 59.53 43.05 64.73 42.8 70.53C42.1 80.46 40 86.83 38.9 92.6"/>
+              <path id="fxJl2" d="M38.17 60.92C38.92 63.92 39.72 69.12 39.47 74.92C38.83 82.43 37 86.69 35.9 91.6"/>
+              <path id="fxJl3" d="M34.96 65.3C35.71 68.3 36.51 73.5 36.26 79.3C35.67 84.2 34.1 86.22 33 90.2"/>
+              <path id="fxJl4" d="M32.49 68.71C33.24 71.71 34.04 76.91 33.79 82.71C33.25 85.36 31.9 85.42 30.8 88.6"/>
+              <path id="fxJr0" d="M55.27 49.86C54.52 52.86 53.72 58.06 53.97 63.86C54.77 77.15 57.3 86.43 58.4 93.4"/>
+              <path id="fxJr1" d="M58.23 52.88C57.48 55.88 56.68 61.08 56.93 66.88C57.7 78.36 60.1 86.08 61.2 92.4"/>
+              <path id="fxJr2" d="M61.15 55.63C60.4 58.63 59.6 63.83 59.85 69.63C60.6 79.2 62.9 85.26 64 90.9"/>
+              <path id="fxJr3" d="M63.85 58.32C63.1 61.32 62.3 66.52 62.55 72.32C63.28 80.01 65.5 84.43 66.6 89.4"/>
+              <path id="fxJr4" d="M65.85 60.35C65.1 63.35 64.3 68.55 64.55 74.35C65.3 80.45 67.6 83.49 68.7 87.9"/>
+
+            </defs>
+
+            <g class="fx-scale"><g class="fx-drift">
+              <!-- dense, moving air lying against the fabric -->
+              <g class="fx-wash">
+                <g class="fx-sheen-layer">
+                  <ellipse class="fx-sheen" cx="38.6" cy="83" rx="9.4" ry="14.6" transform="rotate(17 38.6 83)" style="animation-delay:-1.1s"/>
+                  <ellipse class="fx-sheen b" cx="50" cy="79" rx="11.2" ry="12.8" style="animation-delay:-3.4s"/>
+                  <ellipse class="fx-sheen" cx="61.2" cy="78.4" rx="9.2" ry="13.6" transform="rotate(-13 61.2 78.4)" style="animation-delay:-2.2s"/>
+                </g>
+              </g>
+
+              <!-- the vented underside: one continuous seam plus the blower plenum -->
+              <g class="fx-duct">
+                <path class="fx-rim-soft" d="M44.75 52.03L41.5 56.53 38.17 60.92 34.96 65.3 32.49 68.71 31.86 69.63"/>
+                <path class="fx-rim-soft" d="M55.27 49.86L58.23 52.88 61.15 55.63 63.85 58.32 66.35 60.9"/>
+                <path class="fx-rim" d="M44.75 52.03L41.5 56.53 38.17 60.92 34.96 65.3 32.49 68.71 31.86 69.63"/>
+                <path class="fx-rim r" d="M55.27 49.86L58.23 52.88 61.15 55.63 63.85 58.32 66.35 60.9"/>
+                <ellipse class="fx-plenum" cx="50" cy="48.29" rx="4.4" ry="2.2"/>
+                <ellipse class="fx-plenum-rim" cx="50" cy="48.29" rx="2.3" ry="1.15"/>
+                <circle class="fx-speck" cx="44.75" cy="52.03" r=".22" style="animation-delay:-.4s"/>
+                <circle class="fx-speck" cx="41.5" cy="56.53" r=".2" style="animation-delay:-1.7s"/>
+                <circle class="fx-speck" cx="38.17" cy="60.92" r=".18" style="animation-delay:-2.6s"/>
+                <circle class="fx-speck" cx="55.27" cy="49.86" r=".2" style="animation-delay:-1.1s"/>
+                <circle class="fx-speck" cx="58.23" cy="52.88" r=".18" style="animation-delay:-3.1s"/>
+                <circle class="fx-speck" cx="61.15" cy="55.63" r=".16" style="animation-delay:-2.2s"/>
+              </g>
+
+              <g class="fx-streams">
+                <!-- entrained plumes: thin at the slot, wide and ragged over the towel -->
+                <g class="fx-plumes">
+                  <path class="fx-plume" d="M49.59 48.39L49.67 49.13L49.75 49.94L49.87 50.82L50.01 51.74L50.12 52.74L50.18 53.79L50.21 54.89L50.24 56.03L50.28 57.21L50.25 58.42L50.09 59.67L49.8 60.94L49.47 62.2L49.12 65.22L48.91 68.12L48.76 70.89L48.52 73.54L48.09 76.03L47.55 78.4L47.01 80.64L46.53 82.78L46.03 84.82L45.41 86.73L44.66 88.53L43.99 90.25L43.63 91.93L51.17 93.15L51.35 91.47L51.28 89.66L51.18 87.72L51.23 85.69L51.42 83.58L51.64 81.36L51.79 79.01L51.92 76.54L52.13 73.96L52.48 71.28L52.86 68.46L53.11 65.5L53.13 62.38L52.88 60.99L52.6 59.65L52.39 58.36L52.25 57.1L52.13 55.88L51.95 54.71L51.74 53.6L51.53 52.54L51.34 51.53L51.16 50.58L50.94 49.71L50.68 48.91L50.41 48.19Z" style="--a:0.62"/>
+                  <path class="fx-plume" d="M49.54 48.29L49.53 49.02L49.49 49.83L49.43 50.7L49.37 51.64L49.33 52.64L49.3 53.69L49.21 54.8L49.03 55.95L48.78 57.15L48.55 58.39L48.44 59.66L48.46 60.96L48.5 62.29L48.48 65.65L48.35 68.87L48.19 71.94L48.08 74.87L47.99 77.67L47.81 80.33L47.47 82.85L47.04 85.25L46.74 87.52L46.72 89.67L46.96 91.69L47.21 93.6L47.22 95.4L52.78 95.4L52.79 93.6L53.04 91.69L53.28 89.67L53.26 87.52L52.96 85.25L52.53 82.85L52.19 80.33L52.01 77.67L51.92 74.87L51.81 71.94L51.65 68.87L51.52 65.65L51.5 62.29L51.54 60.96L51.56 59.66L51.45 58.39L51.22 57.15L50.97 55.95L50.79 54.8L50.7 53.69L50.67 52.64L50.63 51.64L50.57 50.7L50.51 49.83L50.47 49.02L50.46 48.29Z" style="--a:0.82"/>
+                  <path class="fx-plume" d="M49.58 48.19L49.4 48.92L49.21 49.74L49.02 50.61L48.77 51.55L48.46 52.54L48.12 53.58L47.84 54.69L47.66 55.87L47.57 57.09L47.51 58.35L47.41 59.65L47.3 60.99L47.24 62.37L47.37 65.46L47.53 68.41L47.6 71.24L47.56 73.97L47.51 76.58L47.64 79.05L48.03 81.36L48.59 83.53L49.08 85.58L49.34 87.56L49.41 89.46L49.43 91.26L49.52 92.95L55.88 91.91L55.42 90.25L54.84 88.52L54.25 86.7L53.83 84.75L53.61 82.68L53.44 80.49L53.12 78.23L52.56 75.89L51.86 73.44L51.2 70.86L50.72 68.13L50.41 65.24L50.16 62.21L50.02 60.94L49.9 59.67L49.86 58.43L49.9 57.22L49.97 56.04L49.99 54.91L49.95 53.8L49.89 52.74L49.88 51.73L49.96 50.78L50.1 49.91L50.26 49.12L50.42 48.39Z" style="--a:0.60"/>
+                  <path class="fx-plume" d="M44.42 52.11L44.53 52.85L44.59 53.67L44.62 54.56L44.67 55.5L44.77 56.49L44.87 57.53L44.94 58.63L44.95 59.77L44.94 60.95L44.94 62.17L44.94 63.41L44.84 64.68L44.58 65.94L44.03 68.67L43.45 71.25L42.99 73.72L42.7 76.1L42.45 78.38L42.09 80.54L41.57 82.57L40.96 84.49L40.4 86.34L39.91 88.12L39.38 89.82L38.7 91.44L37.93 92.95L45.27 94.25L45.06 92.63L45.02 90.96L45.19 89.22L45.46 87.41L45.7 85.47L45.9 83.43L46.18 81.3L46.61 79.09L47.11 76.77L47.52 74.32L47.69 71.72L47.64 68.98L47.52 66.12L47.34 64.72L47.25 63.39L47.2 62.09L47.09 60.83L46.92 59.62L46.73 58.45L46.55 57.33L46.38 56.26L46.18 55.26L45.91 54.32L45.6 53.46L45.31 52.67L45.08 51.95Z" style="--a:0.95"/>
+                  <path class="fx-plume" d="M41.04 56.64L41.17 57.37L41.3 58.18L41.43 59.05L41.52 59.98L41.59 60.98L41.67 62.03L41.76 63.12L41.84 64.26L41.81 65.45L41.64 66.67L41.37 67.91L41.13 69.17L40.99 70.42L40.84 72.59L40.67 74.66L40.36 76.62L39.93 78.46L39.49 80.2L39.08 81.87L38.66 83.47L38.1 84.97L37.36 86.38L36.56 87.73L35.94 89.1L35.66 90.52L35.66 91.95L42.14 93.25L42.68 91.99L43 90.67L43.03 89.22L42.9 87.66L42.85 86.04L42.99 84.41L43.26 82.72L43.53 80.95L43.72 79.08L43.88 77.13L44.11 75.08L44.38 72.93L44.61 70.64L44.55 69.23L44.32 67.89L44 66.59L43.72 65.34L43.53 64.13L43.4 62.96L43.26 61.84L43.06 60.77L42.83 59.77L42.6 58.83L42.39 57.95L42.18 57.15L41.96 56.42Z" style="--a:0.86"/>
+                  <path class="fx-plume" d="M37.74 61.02L37.88 61.76L38 62.56L38.14 63.43L38.28 64.36L38.4 65.35L38.43 66.41L38.35 67.52L38.22 68.67L38.12 69.86L38.11 71.06L38.13 72.3L38.11 73.57L37.98 74.82L37.7 76.41L37.43 77.93L37.17 79.35L36.83 80.69L36.31 81.91L35.61 83.03L34.91 84.1L34.4 85.18L34.16 86.33L34.05 87.51L33.85 88.68L33.45 89.8L32.92 90.89L38.88 92.31L38.89 91.15L39.05 90.05L39.46 89L39.97 87.95L40.37 86.82L40.49 85.57L40.41 84.22L40.32 82.82L40.36 81.4L40.55 79.94L40.76 78.41L40.9 76.78L40.96 75.02L40.91 73.62L40.9 72.28L40.87 70.98L40.74 69.71L40.49 68.5L40.16 67.34L39.84 66.24L39.59 65.18L39.41 64.18L39.23 63.23L39.03 62.35L38.81 61.55L38.6 60.82Z" style="--a:0.74"/>
+                  <path class="fx-plume" d="M34.57 65.39L34.76 66.11L34.9 66.92L34.97 67.8L34.98 68.75L34.96 69.76L34.98 70.81L35.04 71.91L35.11 73.05L35.12 74.22L35.07 75.44L35.01 76.68L34.98 77.95L34.93 79.19L34.68 80.15L34.24 81.03L33.67 81.78L33.14 82.46L32.79 83.15L32.62 83.87L32.47 84.62L32.2 85.34L31.77 86.04L31.29 86.76L30.87 87.56L30.48 88.45L30 89.32L36 91.08L36.04 90.18L36.21 89.4L36.35 88.64L36.45 87.84L36.6 87.06L36.89 86.31L37.3 85.57L37.67 84.76L37.82 83.83L37.76 82.81L37.61 81.72L37.53 80.61L37.59 79.41L37.62 78L37.6 76.66L37.49 75.36L37.33 74.1L37.18 72.88L37.04 71.71L36.86 70.59L36.61 69.53L36.29 68.54L35.98 67.62L35.71 66.75L35.51 65.95L35.35 65.21Z" style="--a:0.60"/>
+                  <path class="fx-plume" d="M32.12 68.8L32.2 69.55L32.27 70.36L32.36 71.23L32.47 72.17L32.56 73.16L32.61 74.21L32.64 75.31L32.69 76.45L32.77 77.63L32.8 78.84L32.69 80.09L32.42 81.36L32.06 82.55L31.74 82.73L31.56 83.03L31.48 83.32L31.37 83.59L31.15 83.8L30.84 84.01L30.51 84.28L30.19 84.65L29.81 85.08L29.24 85.5L28.46 85.94L27.64 86.51L27.08 87.19L34.52 90.01L34.47 89.32L34.18 88.72L33.94 88.15L33.9 87.69L34.05 87.33L34.25 86.98L34.42 86.56L34.58 86.08L34.81 85.59L35.12 85.08L35.42 84.51L35.56 83.82L35.52 82.87L35.24 81.41L34.98 80.07L34.82 78.78L34.74 77.52L34.66 76.3L34.5 75.13L34.29 74.01L34.07 72.95L33.86 71.95L33.64 71L33.4 70.13L33.13 69.34L32.86 68.62Z" style="--a:0.46"/>
+                  <path class="fx-plume" d="M54.82 49.75L54.62 50.48L54.4 51.29L54.15 52.16L53.93 53.1L53.75 54.11L53.61 55.18L53.45 56.3L53.21 57.46L52.89 58.66L52.57 59.92L52.37 61.22L52.32 62.56L52.36 63.95L52.53 66.99L52.7 69.9L52.91 72.67L53.22 75.31L53.6 77.81L53.89 80.21L53.99 82.53L53.93 84.77L53.9 86.88L54.1 88.84L54.56 90.63L55.1 92.29L55.45 93.9L61.35 92.9L61.15 91.22L61.04 89.4L60.8 87.53L60.24 85.64L59.42 83.71L58.55 81.69L57.85 79.53L57.36 77.22L56.99 74.77L56.61 72.21L56.2 69.54L55.83 66.72L55.58 63.77L55.54 62.51L55.48 61.24L55.33 60L55.12 58.78L54.96 57.59L54.92 56.44L55.01 55.35L55.14 54.3L55.27 53.32L55.36 52.38L55.45 51.5L55.57 50.7L55.72 49.97Z" style="--a:0.95"/>
+                  <path class="fx-plume" d="M57.78 52.77L57.59 53.51L57.42 54.32L57.25 55.2L57.04 56.14L56.76 57.14L56.43 58.18L56.12 59.29L55.89 60.46L55.76 61.68L55.65 62.94L55.54 64.24L55.43 65.58L55.41 66.97L55.63 69.6L55.89 72.09L56.05 74.48L56.06 76.79L56 79.01L56.05 81.13L56.34 83.1L56.82 84.93L57.32 86.66L57.66 88.34L57.85 89.95L58 91.49L58.2 92.96L64.2 91.84L63.85 90.34L63.38 88.8L62.87 87.21L62.48 85.54L62.22 83.77L61.93 81.95L61.45 80.08L60.75 78.17L59.97 76.17L59.32 74.03L58.89 71.75L58.64 69.33L58.45 66.79L58.35 65.53L58.23 64.26L58.17 63.02L58.17 61.81L58.19 60.63L58.17 59.49L58.11 58.38L58.05 57.32L58.08 56.31L58.19 55.37L58.35 54.51L58.52 53.72L58.68 52.99Z" style="--a:0.86"/>
+                  <path class="fx-plume" d="M60.82 55.55L60.61 56.28L60.34 57.07L60.04 57.93L59.76 58.86L59.52 59.86L59.32 60.93L59.12 62.05L58.91 63.21L58.74 64.43L58.65 65.69L58.65 66.99L58.63 68.32L58.51 69.72L58.4 71.95L58.29 74.08L58.34 76.09L58.61 77.98L59.02 79.76L59.4 81.44L59.69 83.07L59.94 84.64L60.24 86.11L60.6 87.51L60.85 88.87L60.83 90.23L60.55 91.62L67.45 90.18L66.63 88.95L65.99 87.64L65.56 86.27L65.2 84.85L64.77 83.42L64.27 81.96L63.82 80.44L63.48 78.82L63.19 77.13L62.82 75.37L62.3 73.54L61.7 71.6L61.19 69.54L60.99 68.28L60.96 67.01L61.01 65.77L61.04 64.56L61.02 63.38L61.02 62.23L61.06 61.14L61.13 60.09L61.19 59.09L61.23 58.15L61.27 57.26L61.34 56.44L61.48 55.71Z" style="--a:0.74"/>
+                  <path class="fx-plume" d="M63.42 58.22L63.19 58.94L62.97 59.75L62.73 60.62L62.49 61.56L62.24 62.56L62.03 63.62L61.9 64.74L61.82 65.92L61.69 67.13L61.46 68.39L61.15 69.68L60.88 71.02L60.76 72.46L60.91 74.28L61.15 75.95L61.37 77.54L61.58 79.06L61.84 80.49L62.21 81.83L62.6 83.09L62.86 84.34L62.86 85.62L62.68 86.9L62.57 88.1L62.71 89.18L63.12 90.23L70.08 88.57L69.94 87.34L69.47 86.16L68.7 85.1L67.83 84.09L67.11 83.04L66.63 81.89L66.3 80.68L65.97 79.42L65.56 78.14L65.15 76.79L64.82 75.35L64.58 73.8L64.34 72.18L64.14 70.97L63.86 69.7L63.6 68.45L63.48 67.23L63.51 66.05L63.63 64.92L63.74 63.82L63.81 62.78L63.86 61.78L63.94 60.84L64.04 59.96L64.16 59.16L64.28 58.42Z" style="--a:0.60"/>
+                  <path class="fx-plume" d="M65.41 60.25L65.19 60.97L64.95 61.77L64.74 62.65L64.58 63.6L64.43 64.61L64.23 65.67L63.94 66.78L63.62 67.93L63.34 69.14L63.16 70.41L63.07 71.71L63.01 73.05L62.95 74.49L63.05 75.99L63.28 77.34L63.63 78.58L63.98 79.74L64.18 80.89L64.19 82.07L64.14 83.24L64.2 84.31L64.5 85.24L64.94 86.07L65.34 86.89L65.56 87.76L65.66 88.74L71.74 87.06L71.29 86.05L70.9 85L70.62 83.95L70.35 82.94L69.9 82.03L69.22 81.23L68.42 80.48L67.71 79.67L67.23 78.74L66.94 77.7L66.71 76.59L66.44 75.42L66.15 74.21L66.01 73L65.94 71.73L65.9 70.49L65.83 69.28L65.71 68.1L65.59 66.94L65.55 65.83L65.62 64.78L65.77 63.79L65.93 62.87L66.06 62L66.17 61.19L66.29 60.45Z" style="--a:0.46"/>
+                </g>
+                <!-- fine fast streaks, each with its own speed, phase and sway -->
+                <g class="fx-jet" style="--a:0.62;--sp:0.41s;--d1:-0.07s;--d2:-1.12s;--swd:4.22s;--swo:-1.81s;--swa:0.31px">
+                  <use class="fx-core" href="#fxJc0"/>
+                  <use class="fx-core b" href="#fxJc0"/>
+                </g>
+                <g class="fx-jet" style="--a:0.82;--sp:0.27s;--d1:-0.67s;--d2:-0.75s;--swd:4.40s;--swo:-2.50s;--swa:0.20px">
+                  <use class="fx-core" href="#fxJc1"/>
+                  <use class="fx-core b" href="#fxJc1"/>
+                </g>
+                <g class="fx-jet" style="--a:0.60;--sp:0.35s;--d1:-0.45s;--d2:-0.91s;--swd:4.78s;--swo:-0.66s;--swa:0.24px">
+                  <use class="fx-core" href="#fxJc2"/>
+                  <use class="fx-core b" href="#fxJc2"/>
+                </g>
+                <g class="fx-jet" style="--a:0.95;--sp:0.32s;--d1:-0.54s;--d2:-1.25s;--swd:3.76s;--swo:-1.32s;--swa:0.29px">
+                  <use class="fx-core" href="#fxJl0"/>
+                  <use class="fx-core b" href="#fxJl0"/>
+                </g>
+                <g class="fx-jet" style="--a:0.86;--sp:0.33s;--d1:-0.75s;--d2:-0.33s;--swd:4.12s;--swo:-2.16s;--swa:0.39px">
+                  <use class="fx-core" href="#fxJl1"/>
+                  <use class="fx-core b" href="#fxJl1"/>
+                </g>
+                <g class="fx-jet" style="--a:0.74;--sp:0.36s;--d1:-0.20s;--d2:-0.66s;--swd:4.59s;--swo:-3.89s;--swa:0.36px">
+                  <use class="fx-core" href="#fxJl2"/>
+                  <use class="fx-core b" href="#fxJl2"/>
+                </g>
+                <g class="fx-jet" style="--a:0.60;--sp:0.29s;--d1:-0.39s;--d2:-1.08s;--swd:5.54s;--swo:-3.28s;--swa:0.20px">
+                  <use class="fx-core" href="#fxJl3"/>
+                  <use class="fx-core b" href="#fxJl3"/>
+                </g>
+                <g class="fx-jet" style="--a:0.46;--sp:0.31s;--d1:-0.65s;--d2:-1.94s;--swd:5.21s;--swo:-0.72s;--swa:0.40px">
+                  <use class="fx-core" href="#fxJl4"/>
+                  <use class="fx-core b" href="#fxJl4"/>
+                </g>
+                <g class="fx-jet" style="--a:0.95;--sp:0.35s;--d1:-1.17s;--d2:-1.64s;--swd:3.79s;--swo:-3.98s;--swa:0.36px">
+                  <use class="fx-core" href="#fxJr0"/>
+                  <use class="fx-core b" href="#fxJr0"/>
+                </g>
+                <g class="fx-jet" style="--a:0.86;--sp:0.42s;--d1:-0.99s;--d2:-0.36s;--swd:5.59s;--swo:-3.26s;--swa:0.27px">
+                  <use class="fx-core" href="#fxJr1"/>
+                  <use class="fx-core b" href="#fxJr1"/>
+                </g>
+                <g class="fx-jet" style="--a:0.74;--sp:0.39s;--d1:-0.21s;--d2:-1.99s;--swd:5.20s;--swo:-1.77s;--swa:0.38px">
+                  <use class="fx-core" href="#fxJr2"/>
+                  <use class="fx-core b" href="#fxJr2"/>
+                </g>
+                <g class="fx-jet" style="--a:0.60;--sp:0.29s;--d1:-1.19s;--d2:-1.63s;--swd:4.37s;--swo:-3.71s;--swa:0.26px">
+                  <use class="fx-core" href="#fxJr3"/>
+                  <use class="fx-core b" href="#fxJr3"/>
+                </g>
+                <g class="fx-jet" style="--a:0.46;--sp:0.42s;--d1:-0.98s;--d2:-0.88s;--swd:5.44s;--swo:-1.74s;--swa:0.31px">
+                  <use class="fx-core" href="#fxJr4"/>
+                  <use class="fx-core b" href="#fxJr4"/>
+                </g>
+                <!-- air skimming across the fabric where the streams land -->
+                <path class="fx-deflect" d="M46.2 66.6Q49.91 66.8 53.08 68.73" style="--dd:-0.89s"/>
+                <path class="fx-deflect" d="M43.6 67.8Q46.24 69.82 49.54 70.17" style="--dd:-1.06s"/>
+                <path class="fx-deflect" d="M41 68.9Q44 69.35 46.22 71.42" style="--dd:-0.67s"/>
+                <path class="fx-deflect" d="M38 70.1Q39.81 72.17 42.51 72.68" style="--dd:-0.22s"/>
+                <path class="fx-deflect" d="M48.4 66.9Q46.33 68.06 44.03 67.43" style="--dd:-0.53s"/>
+                <path class="fx-deflect" d="M51.6 66.6Q53.89 67.23 55.97 66.07" style="--dd:-0.79s"/>
+                <path class="fx-deflect" d="M54.4 66.2Q57.38 64.34 60.9 64.19" style="--dd:-0.00s"/>
+                <path class="fx-deflect" d="M57.2 65.7Q60.32 65.42 62.77 63.47" style="--dd:-0.26s"/>
+                <path class="fx-deflect" d="M60.2 65.1Q62.22 63.09 65.04 62.7" style="--dd:-0.67s"/>
+                <path class="fx-deflect" d="M62.8 64.6Q65.33 64.16 66.94 62.17" style="--dd:-1.58s"/>
+                <!-- faint spill past the arm tips -->
+                <path class="fx-spill" d="M31.86 69.63C30.4 72.4 29.4 75.6 28.6 79.2" style="--sd:-0.2s"/>
+                <path class="fx-spill" d="M31.86 69.63C30.1 71.6 28.6 73.4 26.9 75.0" style="--sd:-1.1s"/>
+                <path class="fx-spill" d="M66.35 60.9C67.6 63.4 68.4 66.4 68.9 69.8" style="--sd:-0.5s"/>
+                <path class="fx-spill" d="M66.35 60.9C68.1 62.6 69.6 64.2 71.0 65.8" style="--sd:-1.4s"/>
+              </g>
+
+              <g class="fx-motes">
+                <ellipse class="fx-mote" rx="0.38" ry="0.11" style="--md:3.4s;--mb:-2.8s"><animateMotion dur="3.4s" begin="-2.8s" rotate="auto" repeatCount="indefinite"><mpath href="#fxJc0"/></animateMotion></ellipse>
+                <ellipse class="fx-mote" rx="0.34" ry="0.11" style="--md:3.0s;--mb:-1.7s"><animateMotion dur="3.0s" begin="-1.7s" rotate="auto" repeatCount="indefinite"><mpath href="#fxJc1"/></animateMotion></ellipse>
+                <ellipse class="fx-mote" rx="0.27" ry="0.09" style="--md:1.8s;--mb:-0.3s"><animateMotion dur="1.8s" begin="-0.3s" rotate="auto" repeatCount="indefinite"><mpath href="#fxJc2"/></animateMotion></ellipse>
+                <ellipse class="fx-mote" rx="0.26" ry="0.09" style="--md:2.1s;--mb:-1.2s"><animateMotion dur="2.1s" begin="-1.2s" rotate="auto" repeatCount="indefinite"><mpath href="#fxJl0"/></animateMotion></ellipse>
+                <ellipse class="fx-mote" rx="0.37" ry="0.13" style="--md:3.3s;--mb:-1.5s"><animateMotion dur="3.3s" begin="-1.5s" rotate="auto" repeatCount="indefinite"><mpath href="#fxJl1"/></animateMotion></ellipse>
+                <ellipse class="fx-mote" rx="0.26" ry="0.09" style="--md:2.0s;--mb:-0.2s"><animateMotion dur="2.0s" begin="-0.2s" rotate="auto" repeatCount="indefinite"><mpath href="#fxJl2"/></animateMotion></ellipse>
+                <ellipse class="fx-mote" rx="0.32" ry="0.10" style="--md:3.2s;--mb:-1.5s"><animateMotion dur="3.2s" begin="-1.5s" rotate="auto" repeatCount="indefinite"><mpath href="#fxJl3"/></animateMotion></ellipse>
+                <ellipse class="fx-mote" rx="0.24" ry="0.06" style="--md:3.1s;--mb:-0.1s"><animateMotion dur="3.1s" begin="-0.1s" rotate="auto" repeatCount="indefinite"><mpath href="#fxJl4"/></animateMotion></ellipse>
+                <ellipse class="fx-mote" rx="0.25" ry="0.08" style="--md:2.3s;--mb:-0.9s"><animateMotion dur="2.3s" begin="-0.9s" rotate="auto" repeatCount="indefinite"><mpath href="#fxJr0"/></animateMotion></ellipse>
+                <ellipse class="fx-mote" rx="0.24" ry="0.09" style="--md:2.0s;--mb:-1.4s"><animateMotion dur="2.0s" begin="-1.4s" rotate="auto" repeatCount="indefinite"><mpath href="#fxJr1"/></animateMotion></ellipse>
+                <ellipse class="fx-mote" rx="0.29" ry="0.08" style="--md:2.2s;--mb:-0.2s"><animateMotion dur="2.2s" begin="-0.2s" rotate="auto" repeatCount="indefinite"><mpath href="#fxJr2"/></animateMotion></ellipse>
+                <ellipse class="fx-mote" rx="0.30" ry="0.12" style="--md:3.1s;--mb:-0.4s"><animateMotion dur="3.1s" begin="-0.4s" rotate="auto" repeatCount="indefinite"><mpath href="#fxJr3"/></animateMotion></ellipse>
+                <ellipse class="fx-mote" rx="0.37" ry="0.15" style="--md:2.0s;--mb:-0.1s"><animateMotion dur="2.0s" begin="-0.1s" rotate="auto" repeatCount="indefinite"><mpath href="#fxJr4"/></animateMotion></ellipse>
+              </g>
+            </g></g>
+          </svg>
+        </div>
+        <div class="cycle-light" aria-hidden="true"></div>
+
+        <div class="marker" id="marker" aria-hidden="true">
+          <span class="ring"></span>
+          <span class="ring"></span>
+          <span class="core"></span>
+          <span class="tag"><span class="leds" aria-hidden="true"><i></i><i></i><i></i></span><span id="mkTag">Hang dry</span></span>
+        </div>
+
+        <div >
+        </div>
+
+        <div class="load-veil" id="veil">
+          <div>
+            <div class="ring"></div>
+            <div class="pct" id="pct">Loading model… 0%</div>
+            <div class="err" id="veilMsg" hidden></div>
+          </div>
+        </div>
+
+        <div class="stage-hud">
+        </div>
+        <div class="hint" id="hint">Drag to orbit · Scroll to zoom · Right-drag to pan</div>
+      </div>
+
+      <div class="steps" id="steps" aria-label="Drying cycle steps">
+        <button class="step" type="button" aria-pressed="false" data-step="1">
+          <span class="idx">01</span>
+          <span class="name">Hang</span>
+          <span class="sub">Place the Towel</span>
+          <i class="prog" aria-hidden="true"></i>
+        </button>
+        <button class="step" type="button" aria-pressed="false" data-step="2">
+          <span class="idx">02</span>
+          <span class="name">Sense</span>
+          <span class="sub">Check Temperature</span>
+          <i class="prog" aria-hidden="true"></i>
+        </button>
+        <button class="step" type="button" aria-pressed="false" data-step="3">
+          <span class="idx">03</span>
+          <span class="name">Control</span>
+          <span class="sub">Controller</span>
+          <i class="prog" aria-hidden="true"></i>
+        </button>
+        <button class="step" type="button" aria-pressed="false" data-step="4">
+          <span class="idx">04</span>
+          <span class="name">Dry</span>
+          <span class="sub">Airflow</span>
+          <i class="prog" aria-hidden="true"></i>
+        </button>
+        <button class="step" type="button" aria-pressed="false" data-step="5">
+          <span class="idx">05</span>
+          <span class="name">Finish</span>
+          <span class="sub">Ready</span>
+          <i class="prog" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div class="viewer-bar">
+        <button class="tool" id="btnFree" title="Exit the guided cycle and orbit freely">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3.2-6.9"/><path d="M3 3v5h5"/></svg>
+          Free orbit
+        </button>
+        <button class="tool" id="btnWire" aria-pressed="false" title="Toggle wireframe (inspect topology)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7v10l10 5 10-5V7L12 2Z"/><path d="M2 7l10 5 10-5"/><path d="M12 12v10"/></svg>
+          Wireframe
+        </button>
+        <button class="tool" id="btnFull" title="Fullscreen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M16 3h3a2 2 0 0 1 2 2v3"/><path d="M8 21H5a2 2 0 0 1-2-2v-3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+          Fullscreen
+        </button>
+        <span class="spacer"></span>
+        <label class="exp">Exposure
+          <input type="range" id="exposure" min="0.5" max="1.8" step="0.05" value="1.05">
+        </label>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="block panel" id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">How it works</p>
+        <h2>Five steps, fully automatic</h2>
+        <p>Hang the towel. AeroFresh handles the rest — sensing, Control, drying and confirming.</p>
+      </div>
+      <div class="flow-grid">
+        <article class="flow-step">
+          <span class="num">01</span>
+          <h3>Hang</h3>
+          <p>Place the damp towel on AeroFresh.</p>
+      
+        </article>
+        <article class="flow-step">
+          <span class="num">02</span>
+          <h3>Sense</h3>
+          <p>Sensors check the humidity and temperature.</p>
+       
+        </article>
+        <article class="flow-step">
+          <span class="num">03</span>
+          <h3>Control</h3>
+          <p>The controller picks the right drying mode.</p>
+      
+        </article>
+        <article class="flow-step">
+          <span class="num">04</span>
+          <h3>Dry</h3>
+          <p>A small fan blows air through the hollow arms into the towel.</p>
+     
+        </article>
+        <article class="flow-step">
+          <span class="num">05</span>
+          <h3>Finish</h3>
+          <p>The fan slows down or stops when the towel is ready, and a light turns on.</p>
+        
+        </article>
+      </div>
+      <p class="flow-note"></p>
+    </div>
+  </section>
+
+  <!-- MODES -->
+
+  <!-- MARKET -->
+  <section class="block panel" id="market">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Market</p>
+        <h2>Built for hotels and resorts</h2>
+        <p>Budget, mid-range, boutique, business and beach hotels first. Spas, gyms, wellness centers,
+        hostels and dormitories next. The owner or manager buys; guests and housekeeping use it.</p>
+      </div>
+      <div class="table-card">
+        <div class="table-scroll">
+          <table class="data">
+            <tr><th>Segment</th><th>Places</th><th>Rooms</th><th>Potential at ₱2,999 per room</th></tr>
+            <tr><td>Philippines: hotels, resorts, other accommodations (2023–2024)</td><td class="n">18,818</td><td class="n">335,592</td><td class="n">₱1,006,440,408</td></tr>
+            <tr><td>Central Luzon: new rooms needed by 2028</td><td class="n">—</td><td class="n">22,327</td><td class="n">₱66,958,673</td></tr>
+            <tr><td>Metro Clark area hotels (2019)</td><td class="n">31</td><td class="n">5,020</td><td class="n">₱15,054,980</td></tr>
+            <tr><td>Spas, gyms, hostels, dormitories</td><td colspan="3" class="muted">Not yet counted (future market)</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="block" id="compare">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Comparison</p>
+        <h2>Small, automatic, made for hotel towels</h2>
+        <p>All in one hanger — no separate rack, dryer or cabinet.</p>
+      </div>
+      <div class="table-card">
+        <div class="table-scroll">
+          <table class="data">
+            <tr><th>Other option</th><th>What it does</th><th>AeroFresh</th></tr>
+            <tr><td>Regular towel rack</td><td class="muted">Only holds the towel</td><td>Senses and dries the towel</td></tr>
+            <tr><td>Electric drying rack</td><td class="muted">Dries items on a rack</td><td>Small and made for towels</td></tr>
+            <tr><td>Clothes dryer</td><td class="muted">Dries big loads</td><td>Dries one or a few towels</td></tr>
+            <tr><td>Garment cabinet</td><td class="muted">Closed cabinet for clothes</td><td>Open and made for hotels</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RENDERS -->
+  <section class="block panel" id="renders">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Product stills</p>
+        <h2>A closer look</h2>
+        <p>Studio renders and an annotated product diagram. Click any image to enlarge.</p>
+      </div>
+      <div class="gallery" id="gallery">
+      <button class="shot shot-lead" data-full="Smart_Drying_Hanger/renders/Smart_Drying_Hanger_Preview.png">
+        <img src="Smart_Drying_Hanger/renders/Smart_Drying_Hanger_Preview.png" alt="Full product render" loading="lazy">
+        <figcaption><b>Full product</b><span>Hero studio view — wide shoulders, towel drape, control module and indicator panel. The same model used in the 3D preview above.</span></figcaption>
+      </button>
+      <button class="shot shot-diagram" type="button" data-full="assets/image.png">
+        <img src="assets/image.png" alt="Annotated AeroFresh smart drying and freshness hanger showing its main components and airflow" loading="lazy">
+        <figcaption><b>System overview</b><span>Annotated component layout — controls, rechargeable battery, fan, air vents, sensors, UV light and charging base.</span></figcaption>
+      </button>
+      <button class="shot" data-full="Smart_Drying_Hanger/renders/Cutaway_Detail.png">
+        <img src="Smart_Drying_Hanger/renders/Cutaway_Detail.png" alt="Central cutaway detail render" loading="lazy">
+        <figcaption><b>Central cutaway</b><span>Blower &amp; battery</span></figcaption>
+      </button>
+      <button class="shot" data-full="Smart_Drying_Hanger/renders/Underside_Detail.png">
+        <img src="Smart_Drying_Hanger/renders/Underside_Detail.png" alt="Underside detail render" loading="lazy">
+        <figcaption><b>Underside detail</b><span>Grille &amp; LED strips</span></figcaption>
+      </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+
+  <!-- DETAILS -->
+
+  <!-- TEAM -->
+  <section class="block" id="team">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">The team</p>
+        <h2>Alt+F5 Technologies</h2>
+        <p>Five students of the School of Computing, Information Technology and Engineering. AeroFresh brings
+        together sensors, a controller and a fan — the skills we study in our course.</p>
+      </div>
+      <div class="team-grid">
+        <div class="person">
+          <h3>Keen Clever T. Latuna</h3>
+          <small>Project Leader (CEO)</small>
+          <p>Leads the team and talks to hotel customers.</p>
+        </div>
+        <div class="person">
+          <h3>Jhercy C. Ferrer</h3>
+          <small>Technical Lead (CTO)</small>
+          <p>Builds the sensors, controller and fan system.</p>
+        </div>
+        <div class="person">
+          <h3>Angela D. Pereyra</h3>
+          <small>Product Design Lead</small>
+          <p>Designs the hanger, box and user guide.</p>
+        </div>
+        <div class="person">
+          <h3>Novie Mae Q. Tambiga</h3>
+          <small>Marketing and Sales Lead</small>
+          <p>Finds hotel customers and promotes AeroFresh.</p>
+        </div>
+        <div class="person">
+          <h3>Adrian C. Tedios</h3>
+          <small>Finance and Operations Lead</small>
+          <p>Manages costs, pricing and testing plans.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact-band" id="contact">
+    <div class="wrap">
+      <p class="kicker"></p>
+      <h2>Fresh towels. Smarter hospitality.</h2>
+      <div class="cta">
+      </div>
+      <p class="contact-meta">AeroFresh Smart Towel Hanger · Alt+F5 Technologies · Philippines</p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div>
+      <div class="footer-brand">AeroFresh</div>
+      <span>Smart Towel Hanger · Alt+F5 Technologies</span>
+    </div>
+    <code></code>
+    <span>© 2026 Alt+F5 Technologies</span>
+  </div>
+</footer>
+
+<dialog id="lightbox">
+  <img id="lbImg" alt="">
+  <div class="lb-bar">
+    <span class="t" id="lbCap"></span>
+    <button class="tool" id="lbClose">Close</button>
+  </div>
+</dialog>
+
+<script type="module">
+  // Load model-viewer from the first CDN that responds.
+  const cdns = [
+    'https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js',
+    'https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js'
+  ];
+  for (const url of cdns){
+    try { await import(url); break; } catch (e) { console.warn('model-viewer CDN failed:', url); }
+  }
+  if (!customElements.get('model-viewer')) {
+    window.dispatchEvent(new CustomEvent('mv-missing'));
+  } else {
+    window.dispatchEvent(new CustomEvent('mv-ready'));
+  }
+</script>
+
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const mv = $('#mv');
+  const veil = $('#veil');
+  const pct = $('#pct');
+  const veilMsg = $('#veilMsg');
+  const stage = $('#stage');
+
+  const fmt = (n) => Number(n).toLocaleString('en-US');
+
+  /* ---- manifest ---- */
+  fetch('Smart_Drying_Hanger/Model_Info.json')
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(info => {
+      const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+      set('s-format', info.format || 'glTF 2.0');
+      set('s-objects', fmt(info.product_objects || 255));
+      set('s-tris', fmt(info.triangles || 1606583));
+      set('s-mats', fmt(info.materials || 25));
+      set('s-imgs', fmt(info.embedded_images || 5));
+      set('s-units', info.units || 'meters');
+      const v = info.validation || {};
+      const valEl = $('#s-val');
+      if (valEl) valEl.innerHTML = `${v.errors ?? 0} / ${v.warnings ?? 0} <small>errors / warnings</small>`;
+      if (info.file_bytes) {
+        const mb = (info.file_bytes / 1048576).toFixed(1);
+        const sizeEl = $('#s-size');
+        if (sizeEl) sizeEl.innerHTML = `${mb} <small>MB</small>`;
+        const chip = $('#chip-size');
+        if (chip) chip.textContent = `${mb} MB`;
+      }
+      set('chip-parts', fmt(info.product_objects || 255));
+      set('chip-tris', fmt(info.triangles || 1606583));
+      set('chip-mats', fmt(info.materials || 25));
+      const list = $('#extList');
+      if (list && Array.isArray(info.extensions)) {
+        list.innerHTML = info.extensions.map(e => `<span class="chip">${e}</span>`).join('');
+      }
+    })
+    .catch(() => { /* file:// or missing manifest — keep static values */ });
+
+  /* ---- loading veil ---- */
+  let revealed = false;
+  const hideVeil = () => {
+    if (revealed) return;
+    revealed = true;
+    veil.style.opacity = '0';
+    setTimeout(() => veil.hidden = true, 500);
+  };
+  mv.addEventListener('progress', (e) => {
+    const total = e.detail.totalProgress;
+    if (total && total > 0) pct.textContent = `Loading model… ${Math.round(total * 100)}%`;
+  });
+  mv.addEventListener('load', () => { pct.textContent = 'Ready'; hideVeil(); });
+  mv.addEventListener('error', (e) => {
+    pct.hidden = true;
+    veilMsg.hidden = false;
+    veilMsg.innerHTML = 'The GLB could not be loaded. Serve this folder over HTTP ' +
+      '(for example <code>python -m http.server 8080</code>) instead of opening the file directly.';
+    console.error('model-viewer error', e);
+  });
+  setTimeout(() => { if (!revealed && mv.loaded) hideVeil(); }, 600);
+
+  /* ---- auto rotate ---- */
+  const btnRotate = $('#btnRotate');
+  btnRotate?.addEventListener('click', () => {
+    const on = btnRotate.getAttribute('aria-pressed') !== 'true';
+    mv.autoRotate = on;
+    btnRotate.setAttribute('aria-pressed', String(on));
+  });
+
+  /* ---- guided cycle ---- */
+  const STEPS = [
+    {
+      name: 'Hang', sub: 'Load the towel',
+      orbitStart: '-8deg 72deg 108%', orbit: '-22deg 66deg 94%', orbitEnd: '-28deg 64deg 91%', target: '0m 0.055m 0m', exposure: 1.03,
+      duration: 6200, cameraAt: 160, driftAt: 4000, clipAt: 300,
+      phases: [[0, 'positioning'], [300, 'settling'], [4200, 'balanced']],
+      phaseTags: {positioning: 'Position towel', settling: 'Towel settling', balanced: 'Load balanced'},
+      tag: 'Hang dry',
+      telemetry: ['LOAD 0.42 kg', 'BALANCE OK'],
+      copy: 'Drape the towel over the silver crossbar. The wide shoulders keep the fabric separated so air can move on both sides.'
+    },
+    {
+      name: 'Sense', sub: 'Read humidity',
+      orbitStart: '-38deg 72deg 68%', orbit: '-55deg 76deg 52%', orbitEnd: '-61deg 73deg 48%', target: '-0.102m 0.012m 0.006m', exposure: 1.08,
+      duration: 6200, cameraAt: 120, driftAt: 3800, clipAt: 0,
+      phases: [[0, 'positioning'], [520, 'sampling'], [2300, 'locked']],
+      phaseTags: {positioning: 'Find sensor', sampling: 'Sampling moisture', locked: '72% RH locked'},
+      tag: 'Humidity + temp',
+      telemetry: ['RH 72%', '28.4°C', 'SENSING'],
+      copy: 'The tip sensor samples moisture and temperature across the fabric and sends the reading to the control module.'
+    },
+    {
+      name: 'Control', sub: 'Set the cycle',
+      orbitStart: '34deg 69deg 66%', orbit: '52deg 74deg 50%', orbitEnd: '59deg 71deg 47%', target: '0.062m 0.044m 0.008m', exposure: 1.12,
+      duration: 5900, cameraAt: 120, driftAt: 3600, clipAt: 0,
+      phases: [[0, 'positioning'], [480, 'configuring'], [2450, 'ready']],
+      phaseTags: {positioning: 'System check', configuring: 'Selecting profile', ready: 'Auto profile ready'},
+      tag: '58% RH · 31°C',
+      telemetry: ['AUTO MODE', 'TARGET 42%', 'UV READY'],
+      copy: 'The control module picks a drying profile and shows live status on the right-arm LED indicator strip.'
+    },
+    {
+      name: 'Dry', sub: 'Airflow + UV',
+      orbitStart: '-18deg 78deg 98%', orbit: '-5deg 72deg 87%', orbitEnd: '13deg 69deg 84%', target: '0m 0.05m 0m', exposure: 1.18,
+      duration: 9000, cameraAt: 120, driftAt: 5700, clipAt: 0,
+      phases: [[0, 'starting'], [320, 'fan'], [900, 'air'], [1750, 'uv'], [3500, 'steady']],
+      phaseTags: {starting: 'System check', fan: 'Blower starting', air: 'Warm airflow', uv: 'UV sterilizing', steady: 'Drying steady'},
+      tag: 'Airflow + UV',
+      telemetry: ['AIR 2.4 m/s', '34.2°C', 'UV ACTIVE'],
+      copy: 'The blower pushes warm air through the underside vents while the violet-blue UV strips sanitize the towel.'
+    },
+    {
+      name: 'Finish', sub: 'Ready to reuse',
+      orbitStart: '15deg 68deg 88%', orbit: '29deg 64deg 78%', orbitEnd: '38deg 61deg 75%', target: '0.05m 0.051m 0.008m', exposure: 1.08,
+      duration: 6600, cameraAt: 120, driftAt: 3900, clipAt: 0,
+      phases: [[0, 'cooldown'], [3300, 'complete']],
+      phaseTags: {cooldown: 'Cooling fabric', complete: 'Dry · ready'},
+      tag: 'Dry · 100%',
+      telemetry: ['RH 41%', 'COOL 30s', 'COMPLETE'],
+      copy: 'Green light: the towel is dry. Drop the hanger on its charging tray and it is ready for the next load.'
+    }
+  ];
+  const DEFAULT_ORBIT = '-34deg 68deg 95%';
+  const stepBtns = Array.from(document.querySelectorAll('.step'));
+  const btnTour = $('#btnTour');
+  const tcStep = $('#tcStep'), tcName = $('#tcName'), tcCopy = $('#tcCopy'), mkTag = $('#mkTag');
+  const telemetry = $('#telemetry');
+  const hudStep = $('#hudStep');
+  let active = -1, stepTimer = null, telemetryTimer = null, playing = false, stepStartedAt = 0;
+  let userCamera = false;   // set once the viewer is touched: keep free orbit during the cycle
+  let motionTimers = [];
+
+  const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4.5 19 12 7 19.5Z"/></svg>';
+  const ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4.5v15"/><path d="M16 4.5v15"/></svg>';
+  const CLIP_END = {
+    'Hang - towel settle': 3.45,
+    'Sense - sensor sampling': 6.2,
+    'Control - status sequence': 5.9,
+    'Dry - full system': 9,
+    'Finish - dock and confirm': 6.6
+  };
+
+  /* Dry-step airflow overlay: keep SMIL motes in sync with the cycle */
+  const fxDry = $('#fxDry');
+  const fxSvg = fxDry ? fxDry.querySelector('svg') : null;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function fxPause(paused) {
+    if (!fxSvg) return;
+    try { paused ? fxSvg.pauseAnimations() : fxSvg.unpauseAnimations(); } catch (_) {}
+  }
+  /* SMIL motion fails closed: hide particles if animateMotion is unsupported */
+  if (fxSvg && !(window.SVGAnimationElement && 'beginElement' in SVGAnimationElement.prototype)) {
+    fxSvg.classList.add('fx-no-smil');
+  }
+  fxPause(true);
+
+  /* keep the airflow aligned with the model framing as the stage aspect changes */
+  function sizeDryFx() {
+    if (!fxSvg) return;
+    const a = stage.clientWidth / Math.max(1, stage.clientHeight);
+    const sx = Math.min(2.5, Math.max(.8, 1.785 / a));
+    const sy = Math.min(1, Math.max(.86, .64 + .38 * a));
+    fxSvg.style.setProperty('--fx-x', sx.toFixed(3));
+    fxSvg.style.setProperty('--fx-y', sy.toFixed(3));
+  }
+  sizeDryFx();
+  if (window.ResizeObserver) new ResizeObserver(() => { sizeDryFx(); markDims(); }).observe(stage);
+  else window.addEventListener('resize', () => { sizeDryFx(); markDims(); });
+
+  /* ---- part markers -------------------------------------------------------
+     The marker dot and the Sense scan ring annotate a real part (sensor,
+     LED strip, grille, status lens), not the middle of the frame. With free
+     orbit during the cycle the camera no longer re-centres each step, so the
+     overlay is projected from the part's world position every frame and stays
+     on it from any angle. */
+  const MARK_ANCHOR = [
+    'Center_underside_speaker_grille',                    // Hang
+    'Round_humidity_and_temperature_sensor',              // Sense
+    'Right_arm_black_LED_indicator_and_display_strip',    // Control
+    'Center_underside_speaker_grille',                    // Dry
+    'Green_status_indicator_lens'                         // Finish
+  ];
+  const markerEl = $('#marker');
+  const scanEl = document.querySelector('.scan');
+  let markNodes = null, markRaf = 0, markW = 0, markH = 0, markV = null;
+
+  function markDims() {
+    markW = stage.clientWidth || 1;
+    markH = stage.clientHeight || 1;
+  }
+
+  /* node origins sit at the model root for some parts, so anchor on the mesh's
+     own bounding-sphere centre instead */
+  function markCentre(o) {
+    const g = o.geometry;
+    if (g) {
+      if (!g.boundingSphere) g.computeBoundingSphere();
+      if (g.boundingSphere) return g.boundingSphere.center;
+    }
+    return o.position;
+  }
+
+  function markBuild() {
+    if (markNodes) return markNodes;
+    const scene = fxScene();
+    if (!scene) return null;
+    const map = new Map();
+    MARK_ANCHOR.forEach(n => {
+      if (map.has(n)) return;
+      let hit = null;
+      scene.traverse(o => { if (!hit && o.name === n) hit = o; });
+      if (hit) map.set(n, { node: hit, c: markCentre(hit) });
+    });
+    if (!map.size) return null;
+    let probe = null;
+    map.forEach(v => { if (!probe) probe = v.c; });
+    markV = probe.clone();
+    markNodes = { map, cam: scene.getCamera() };
+    return markNodes;
+  }
+
+  function markPlace() {
+    const m = markNodes;
+    if (!m || active < 0) return;
+    const hit = m.map.get(MARK_ANCHOR[active]);
+    if (!hit) return;
+    const cam = m.cam;
+    cam.updateMatrixWorld(true);
+    cam.matrixWorldInverse.copy(cam.matrixWorld).invert();
+    const v = markV.copy(hit.c)
+      .applyMatrix4(hit.node.matrixWorld)
+      .applyMatrix4(cam.matrixWorldInverse)
+      .applyMatrix4(cam.projectionMatrix);
+    const x = (v.x + 1) / 2, y = (1 - v.y) / 2;
+    const onScreen = v.z < 1 && x > -0.06 && x < 1.06 && y > -0.06 && y < 1.06;
+    const dx = (x - 0.5) * markW, dy = (y - 0.5) * markH;
+    const left = `calc(50% + ${dx.toFixed(1)}px)`, top = `calc(50% + ${dy.toFixed(1)}px)`;
+    markerEl.style.left = left; markerEl.style.top = top;
+    scanEl.style.left = left; scanEl.style.top = top;
+    markerEl.style.visibility = onScreen ? '' : 'hidden';
+    scanEl.style.visibility = onScreen ? '' : 'hidden';
+  }
+
+  function markTrack(on) {
+    cancelAnimationFrame(markRaf);
+    markRaf = 0;
+    if (!on || !markerEl || !scanEl) {
+      if (markerEl) { markerEl.style.left = ''; markerEl.style.top = ''; markerEl.style.visibility = ''; }
+      if (scanEl) { scanEl.style.left = ''; scanEl.style.top = ''; scanEl.style.visibility = ''; }
+      return;
+    }
+    if (!markBuild()) return;
+    markDims();
+    const loop = () => {
+      if (active < 0) { markRaf = 0; return; }
+      markPlace();
+      markRaf = requestAnimationFrame(loop);
+    };
+    markPlace();
+    markRaf = requestAnimationFrame(loop);
+  }
+
+  reduceMotion.addEventListener?.('change', (e) => {
+    if (e.matches) { fxPause(true); fxTrack(false); }
+    else if (stage.classList.contains('touring') && !stage.classList.contains('cycle-paused')) {
+      fxPause(false);
+      fxTrack(active === 3);
+    }
+  });
+
+  /* ---- vent lock ----------------------------------------------------------
+     The airflow overlay is traced in viewBox units for one reference camera,
+     but the idle turntable, the Dry camera drift and any manual orbit all move
+     the vents on screen. While Dry is up, fit the affine that maps the
+     authored vent anchors onto the projected vent slots and drive .fx-drift
+     with it, so the jets stay seated in the vents through every camera move. */
+  const FX_ANCHORS = [
+    ['Left_underside_vent_slot_00', 44.75, 52.03],
+    ['Left_underside_vent_slot_06', 41.5, 56.53],
+    ['Left_underside_vent_slot_12', 38.17, 60.92],
+    ['Left_underside_vent_slot_18', 34.96, 65.3],
+    ['Left_underside_vent_slot_24', 32.49, 68.71],
+    ['Right_underside_vent_slot_00', 55.27, 49.86],
+    ['Right_underside_vent_slot_06', 58.23, 52.88],
+    ['Right_underside_vent_slot_12', 61.15, 55.63],
+    ['Right_underside_vent_slot_18', 63.85, 58.32],
+    ['Right_underside_vent_slot_24', 65.85, 60.35]
+  ];
+  const fxDrift = fxSvg ? fxSvg.querySelector('.fx-drift') : null;
+  let fxLock = null;
+  let fxRaf = 0;
+
+  function fxScene() {
+    try {
+      const key = Object.getOwnPropertySymbols(mv).find(s => String(s) === 'Symbol(scene)');
+      return key ? mv[key] : null;
+    } catch (_) { return null; }
+  }
+
+  /* least-squares affine x' = ax + by + c, y' = dx + ey + f through the anchors */
+  function fxBuildLock() {
+    if (fxLock || !fxDrift) return fxLock;
+    const scene = fxScene();
+    if (!scene) return null;
+    const found = new Map();
+    scene.traverse(o => {
+      const hit = FX_ANCHORS.find(a => a[0] === o.name);
+      if (hit) found.set(hit[0], o);
+    });
+    const pts = [];
+    FX_ANCHORS.forEach(([name, x, y]) => {
+      const node = found.get(name);
+      if (node) pts.push({ node, x, y });
+    });
+    if (pts.length < 4) return null;
+    let sxx = 0, sxy = 0, syy = 0, sx = 0, sy = 0;
+    pts.forEach(p => {
+      sxx += p.x * p.x; sxy += p.x * p.y; syy += p.y * p.y; sx += p.x; sy += p.y;
+    });
+    const m = [sxx, sxy, sx, sxy, syy, sy, sx, sy, pts.length];
+    const det = m[0] * (m[4] * m[8] - m[5] * m[7])
+      - m[1] * (m[3] * m[8] - m[5] * m[6])
+      + m[2] * (m[3] * m[7] - m[4] * m[6]);
+    if (!det || !isFinite(det)) return null;
+    const inv = [
+      (m[4] * m[8] - m[5] * m[7]) / det, (m[2] * m[7] - m[1] * m[8]) / det, (m[1] * m[5] - m[2] * m[4]) / det,
+      (m[5] * m[6] - m[3] * m[8]) / det, (m[0] * m[8] - m[2] * m[6]) / det, (m[2] * m[3] - m[0] * m[5]) / det,
+      (m[3] * m[7] - m[4] * m[6]) / det, (m[1] * m[6] - m[0] * m[7]) / det, (m[0] * m[4] - m[1] * m[3]) / det
+    ];
+    fxLock = { pts, inv, scene, cam: null, v: new (pts[0].node.position.constructor)() };
+    return fxLock;
+  }
+
+  function fxTrack(on) {
+    if (!fxDrift) return;
+    cancelAnimationFrame(fxRaf);
+    fxRaf = 0;
+    if (!on || reduceMotion.matches) {
+      fxDrift.style.transform = '';
+      fxDrift.style.transition = '';
+      return;
+    }
+    const lock = fxBuildLock();
+    const cam = lock && (lock.cam || (lock.cam = lock.scene.getCamera()));
+    if (!cam) return;                       // plain CSS drift as the fallback
+    fxDrift.style.transition = 'none';
+    const step = () => {
+      if (active !== 3) { fxRaf = 0; return; }
+      const sx = parseFloat(fxSvg.style.getPropertyValue('--fx-x')) || 1;
+      const sy = parseFloat(fxSvg.style.getPropertyValue('--fx-y')) || 1;
+      cam.updateMatrixWorld(true);
+      cam.matrixWorldInverse.copy(cam.matrixWorld).invert();
+      const v = lock.v;
+      let ux = 0, uy = 0, uu = 0, wx = 0, wy = 0, ww = 0;
+      for (let i = 0; i < lock.pts.length; i++) {
+        const p = lock.pts[i];
+        v.setFromMatrixPosition(p.node.matrixWorld)
+          .applyMatrix4(cam.matrixWorldInverse)
+          .applyMatrix4(cam.projectionMatrix);
+        const u = (v.x + 1) * 50, w = (1 - v.y) * 50;
+        ux += u * p.x; uy += u * p.y; uu += u;
+        wx += w * p.x; wy += w * p.y; ww += w;
+      }
+      const m = lock.inv;
+      const a = m[0] * ux + m[1] * uy + m[2] * uu;
+      const b = m[3] * ux + m[4] * uy + m[5] * uu;
+      const c = m[6] * ux + m[7] * uy + m[8] * uu;
+      const d = m[0] * wx + m[1] * wy + m[2] * ww;
+      const e = m[3] * wx + m[4] * wy + m[5] * ww;
+      const f = m[6] * wx + m[7] * wy + m[8] * ww;
+      if (isFinite(a + b + c + d + e + f)) {
+        /* the fitted map includes the aspect scale; take it back out again */
+        const kx = 50 - 50 / sx, ky = 50 - 50 / sy;
+        fxDrift.style.transform =
+          `matrix(${(a / sx).toFixed(5)},${(d / sy).toFixed(5)},${(b / sx).toFixed(5)},` +
+          `${(e / sy).toFixed(5)},${(c / sx + kx).toFixed(5)},${(f / sy + ky).toFixed(5)})`;
+      }
+      fxRaf = requestAnimationFrame(step);
+    };
+    fxRaf = requestAnimationFrame(step);
+  }
+
+  function paintPlaying() {
+    if (!btnTour) return;
+    btnTour.innerHTML = (playing ? ICON_PAUSE + ' Pause cycle' : ICON_PLAY + ' Play cycle');
+    btnTour.setAttribute('aria-pressed', String(playing));
+  }
+
+  function paintTelemetry(values) {
+    telemetry.replaceChildren(...values.map(value => {
+      const item = document.createElement('span');
+      item.textContent = value;
+      return item;
+    }));
+  }
+
+  function stopModelClip() {
+    try {
+      mv.pause();
+      const end = CLIP_END[mv.animationName];
+      if (end !== undefined) mv.currentTime = end;
+    } catch (_) {}
+  }
+
+  function playModelClip(name, repetitions, startTime = 0) {
+    if (!mv.loaded || !mv.availableAnimations?.includes(name)) return;
+    stopModelClip();
+    mv.animationName = name;
+    mv.currentTime = startTime;
+    mv.play({ repetitions });
+  }
+
+  function runPhysicalAnimation(step, elapsed = 0) {
+    if (step === 0 && elapsed < 3450) playModelClip('Hang - towel settle', 1, elapsed / 1000);
+    else if (step === 1 && elapsed < 6200) playModelClip('Sense - sensor sampling', 1, elapsed / 1000);
+    else if (step === 2 && elapsed < 5900) playModelClip('Control - status sequence', 1, elapsed / 1000);
+    else if (step === 3 && elapsed < 9000) playModelClip('Dry - full system', 1, elapsed / 1000);
+    else if (step === 4 && elapsed < 6600) playModelClip('Finish - dock and confirm', 1, elapsed / 1000);
+    else stopModelClip();
+  }
+
+  function startLiveReadings(step, definition) {
+    clearInterval(telemetryTimer);
+    const started = performance.now();
+    const phaseTime = name => definition.phases.find(([, phase]) => phase === name)?.[0] ?? 0;
+    const update = () => {
+      const elapsed = performance.now() - started;
+      if (step === 0) {
+        const settling = elapsed >= phaseTime('settling');
+        const balanced = elapsed >= phaseTime('balanced');
+        paintTelemetry(balanced ? ['LOAD 0.42 kg', 'BALANCE OK'] : settling ? ['LOAD 0.42 kg', 'SETTLING'] : ['POSITIONING', '—']);
+      } else if (step === 1) {
+        const sampling = elapsed >= phaseTime('sampling');
+        const locked = elapsed >= phaseTime('locked');
+        paintTelemetry([`RH ${locked ? '72' : '—'}%`, locked ? '28.4°C' : '—°C', locked ? 'SENSOR LOCK' : sampling ? 'SAMPLING' : 'POSITIONING']);
+      } else if (step === 2) {
+        const configuring = elapsed >= phaseTime('configuring');
+        const ready = elapsed >= phaseTime('ready');
+        paintTelemetry(ready ? definition.telemetry : configuring ? ['AUTO MODE', 'ANALYZING LOAD', 'PROFILE SELECT'] : ['SYSTEM CHECK', '—', '—']);
+      } else if (step === 3) {
+        const fanAt = phaseTime('fan');
+        const airAt = phaseTime('air');
+        const p = Math.max(0, Math.min((elapsed - airAt) / (definition.duration - airAt), 1));
+        const rh = Math.round(72 - p * 28);
+        const temp = (30.8 + Math.min(p * 5.1, 3.6)).toFixed(1);
+        const uvOn = elapsed >= phaseTime('uv');
+        const status = elapsed < fanAt ? 'SYSTEM CHECK' : elapsed < airAt ? 'FAN SPINUP' : uvOn ? 'UV ACTIVE' : 'PREHEAT';
+        paintTelemetry([`RH ${rh}%`, `AIR ${elapsed < airAt ? '0.0' : '2.4'} m/s`, `${temp}°C`, status]);
+      } else if (step === 4) {
+        const completeAt = phaseTime('complete');
+        const remaining = Math.max(0, Math.ceil((completeAt - elapsed) / 1000));
+        paintTelemetry(['RH 41%', remaining ? `COOL ${remaining}s` : 'COOL DONE', remaining ? 'STABILIZING' : 'COMPLETE']);
+      } else paintTelemetry(definition.telemetry);
+    };
+    update();
+    telemetryTimer = setInterval(update, 250);
+  }
+
+  function clearMotionTimers() {
+    motionTimers.forEach(clearTimeout);
+    motionTimers = [];
+  }
+
+  /* model-viewer's idle auto-rotate turns an internal scene pivot. Stopping it
+     freezes that yaw at an arbitrary angle, so the hanger would face a slightly
+     different way on every load and the vent-anchored airflow would miss its
+     vents. Read the frozen yaw and add it to the orbit we set: the camera turns
+     by the same amount the model did, which pins the hanger to one fixed
+     apparent azimuth no matter how long the page sat spinning. */
+  function modelYawDeg() {
+    try {
+      const key = Object.getOwnPropertySymbols(mv).find(s => String(s) === 'Symbol(scene)');
+      const scene = key && mv[key];
+      let pivot = null;
+      if (scene && scene.traverse) scene.traverse(o => { if (!pivot && o.name === 'Pivot') pivot = o; });
+      if (!pivot) return null;
+      const q = pivot.quaternion;
+      let deg = 2 * Math.atan2(q.y, q.w) * 180 / Math.PI;
+      deg = ((deg + 180) % 360 + 360) % 360 - 180;
+      return Math.abs(deg) < 0.02 ? 0 : deg;
+    } catch (_) { return null; }
+  }
+  /* The Dry vents, plumes and contact line in the SVG were traced from the
+     hanger seen ~15deg round from the step's -5deg goal orbit, so the Dry step
+     keeps that authored azimuth (see genfx.py). */
+  const DRY_AUTHORED_YAW = -15;
+  let yawDeg = 0;
+  function setOrbit(orbit) {
+    if (!yawDeg) { mv.cameraOrbit = orbit; return; }
+    const parts = String(orbit).trim().split(/\s+/);
+    const deg = /^(-?[\d.]+)deg$/.exec(parts[0]);
+    if (!deg) { mv.cameraOrbit = orbit; return; }
+    parts[0] = `${(parseFloat(deg[1]) + yawDeg).toFixed(2)}deg`;
+    mv.cameraOrbit = parts.join(' ');
+  }
+
+  function showStep(i) {
+    active = i;
+    const s = STEPS[i];
+    stepStartedAt = performance.now();
+
+    stage.dataset.step = String(i + 1);
+    stage.dataset.phase = s.phases[0][1];
+    stage.classList.add('touring');
+    stage.classList.remove('cycle-paused');
+    fxPause(i !== 3 || reduceMotion.matches);
+    fxTrack(i === 3);
+    mv.autoRotate = false;
+    const yaw = modelYawDeg();
+    yawDeg = yaw === null ? 0 : yaw + (i === 3 ? DRY_AUTHORED_YAW : 0);
+    btnRotate?.setAttribute('aria-pressed', 'false');
+    clearMotionTimers();
+    stopModelClip();
+    /* the camera path is only applied until the viewer is touched; after that
+       the cycle keeps playing but the framing belongs to the user */
+    if (!userCamera) {
+      mv.cameraTarget = s.target;
+      setOrbit(s.orbitStart);
+      mv.setAttribute('interpolation-decay', i === 0 ? '6' : '10');
+    }
+    mv.exposure = s.exposure;
+    markTrack(true);
+    if (!userCamera) {
+      motionTimers.push(setTimeout(() => { if (active === i && !userCamera) setOrbit(s.orbit); }, s.cameraAt));
+      motionTimers.push(setTimeout(() => { if (active === i && !userCamera) setOrbit(s.orbitEnd); }, s.driftAt));
+    }
+    /* keep the Dry airflow locked to the vents while the camera drifts */
+    stage.dataset.fx = '';
+    if (i === 3) motionTimers.push(setTimeout(() => { if (active === i) stage.dataset.fx = 'end'; }, s.driftAt));
+    if (s.clipAt === 0) runPhysicalAnimation(i);
+    else if (s.clipAt !== undefined) motionTimers.push(setTimeout(() => { if (active === i) runPhysicalAnimation(i); }, s.clipAt));
+    s.phases.slice(1).forEach(([at, phase]) => {
+      motionTimers.push(setTimeout(() => {
+        if (active !== i) return;
+        stage.dataset.phase = phase;
+        mkTag.textContent = s.phaseTags[phase];
+      }, at));
+    });
+
+    tcStep.textContent = `Step ${i + 1} of 5`;
+    tcName.textContent = s.name;
+    tcCopy.textContent = s.copy;
+    mkTag.textContent = s.phaseTags[s.phases[0][1]] || s.tag;
+    startLiveReadings(i, s);
+    if (hudStep) hudStep.textContent = `Step ${i + 1}/5 · ${s.name}`;
+
+    stepBtns.forEach((b, j) => {
+      const sel = j === i;
+      b.setAttribute('aria-pressed', String(sel));
+      b.classList.toggle('playing', sel && playing);
+      b.style.setProperty('--step-ms', `${s.duration}ms`);
+      if (sel && playing) {
+        const prog = b.querySelector('.prog');
+        if (prog) { prog.style.animation = 'none'; void prog.offsetWidth; prog.style.animation = ''; }
+      }
+    });
+
+    clearTimeout(stepTimer);
+    if (playing) stepTimer = setTimeout(() => showStep((i + 1) % STEPS.length), s.duration);
+  }
+
+  function startTour(from) {
+    playing = true;
+    userCamera = false;
+    paintPlaying();
+    showStep(from === undefined ? Math.max(active, 0) : from);
+  }
+
+  function pauseTour() {
+    playing = false;
+    clearTimeout(stepTimer);
+    clearMotionTimers();
+    clearInterval(telemetryTimer);
+    try { mv.pause(); } catch (_) {}
+    stage.classList.add('cycle-paused');
+    fxPause(true);
+    paintPlaying();
+    stepBtns.forEach(b => b.classList.remove('playing'));
+  }
+
+  function exitTour() {
+    pauseTour();
+    clearMotionTimers();
+    clearInterval(telemetryTimer);
+    stopModelClip();
+    active = -1;
+    userCamera = false;
+    stage.classList.remove('touring');
+    stage.classList.remove('cycle-paused');
+    fxTrack(false);
+    markTrack(false);
+    delete stage.dataset.step;
+    delete stage.dataset.phase;
+    stepBtns.forEach(b => b.setAttribute('aria-pressed', 'false'));
+    if (hudStep) hudStep.textContent = 'Guided cycle';
+    mv.cameraTarget = 'auto auto auto';
+    setOrbit(DEFAULT_ORBIT);
+    mv.setAttribute('interpolation-decay', '10');
+    mv.fieldOfView = 'auto';
+    mv.exposure = Number($('#exposure').value);
+    mv.autoRotate = true;
+    btnRotate?.setAttribute('aria-pressed', 'true');
+  }
+
+  btnTour?.addEventListener('click', () => {
+    if (playing) pauseTour();
+    else startTour(active < 0 ? 0 : undefined);
+  });
+  stepBtns.forEach((b, i) => b.addEventListener('click', () => { userCamera = false; showStep(i); }));
+  $('#btnFree').addEventListener('click', exitTour);
+  $('#btnHeroPlay')?.addEventListener('click', () => {
+    document.getElementById('viewer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    startTour(0);
+  });
+
+  /* Free orbit during the cycle: a real camera drag or zoom hands the framing
+     to the user, but must not pause the tour — the steps keep advancing on
+     their own timers while the model follows the pointer. A bare click that
+     does not move the camera still lets the authored camera path run. */
+  let camSig = { t: NaN, p: NaN, r: NaN };
+  function orbitSig() {
+    try {
+      const g = mv.getCameraOrbit();
+      return { t: g.theta, p: g.phi, r: g.radius };
+    } catch (_) { return camSig; }
+  }
+  mv.addEventListener('camera-change', (e) => {
+    const now = orbitSig();
+    const moved = Math.abs(now.t - camSig.t) > 0.006 ||
+                  Math.abs(now.p - camSig.p) > 0.006 ||
+                  Math.abs(now.r - camSig.r) > 0.004;
+    const byUser = !!(e.detail && e.detail.source === 'user-interaction');
+    camSig = now;
+    if (playing && byUser && moved) userCamera = true;
+  });
+  /* re-apply the active framing once the GLB finishes loading */
+  mv.addEventListener('load', () => {
+    if (active >= 0 && !userCamera) {
+      mv.cameraTarget = STEPS[active].target;
+      setOrbit(STEPS[active].orbit);
+      const clipAt = STEPS[active].clipAt;
+      const elapsed = performance.now() - stepStartedAt;
+      if (clipAt !== undefined && elapsed >= clipAt) runPhysicalAnimation(active, elapsed - clipAt);
+    }
+    if (active === 3) { fxLock = null; fxTrack(true); }
+    markNodes = null;
+    if (active >= 0) markTrack(true);
+  });
+
+
+  /* ---- exposure ---- */
+  $('#exposure').addEventListener('input', (e) => {
+    mv.exposure = Number(e.target.value);
+  });
+
+  /* ---- wireframe ---- */
+  let wireOn = false;
+  let wireMats = [];
+  mv.addEventListener('load', () => {
+    try {
+      const mats = new Set();
+      mv.model.traverse((o) => {
+        if (!o.isMesh) return;
+        (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => m && mats.add(m));
+      });
+      wireMats = [...mats];
+    } catch (err) { wireMats = []; }
+  });
+  $('#btnWire').addEventListener('click', (e) => {
+    wireOn = !wireOn;
+    wireMats.forEach(m => { try { m.wireframe = wireOn; m.needsUpdate = true; } catch (_) {} });
+    e.currentTarget.setAttribute('aria-pressed', String(wireOn));
+  });
+
+  /* ---- fullscreen ---- */
+  $('#btnFull').addEventListener('click', () => {
+    const viewer = stage.closest('.viewer');
+    if (!document.fullscreenElement) viewer?.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  });
+
+  /* ---- lightbox ---- */
+  const lb = $('#lightbox');
+  const lbImg = $('#lbImg');
+  const lbCap = $('#lbCap');
+  const caps = {
+    'Smart_Drying_Hanger/renders/Smart_Drying_Hanger_Preview.png': 'Full product — studio render',
+    'assets/image.png': 'AeroFresh system overview — annotated components and airflow',
+    'Smart_Drying_Hanger/renders/Cutaway_Detail.png': 'Central cutaway — blower and battery module',
+    'Smart_Drying_Hanger/renders/Underside_Detail.png': 'Underside — grille, LED strips and sensor'
+  };
+  document.querySelectorAll('.shot').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const src = btn.dataset.full;
+      lbImg.src = src;
+      lbImg.alt = btn.querySelector('img')?.alt || '';
+      lbCap.textContent = caps[src] || '';
+      lb.showModal();
+    });
+  });
+  $('#lbClose').addEventListener('click', () => lb.close());
+  lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+
+  /* ---- hint fade ---- */
+  const hint = $('#hint');
+  let hintTimer;
+  const fadeHint = () => { if (hint) { hint.style.opacity = '0'; } };
+  const armHint = () => { clearTimeout(hintTimer); hintTimer = setTimeout(fadeHint, 7000); };
+  ['pointerdown','wheel','touchstart'].forEach(ev => $('#stage').addEventListener(ev, fadeHint, {passive:true}));
+  mv.addEventListener('load', armHint);
+
+  /* ---- CDN missing state ---- */
+  window.addEventListener('mv-missing', () => {
+    pct.hidden = true;
+    veilMsg.hidden = false;
+    veilMsg.innerHTML = 'The 3D viewer library could not be fetched (offline or CDN blocked). ' +
+      'The GLB and renders below still work — open the model with any glTF viewer.';
+  });
+})();
+</script>
+
+<script>
+/* Story-section "View in 3D" links: scroll to the live viewer, then select the
+   matching guided-cycle step through the existing step buttons. The preview
+   code is not modified. The fallback keeps the jump working in browsers (and
+   headless runs) that ignore programmatic smooth scrolling. */
+(() => {
+  const viewer = document.getElementById('viewer');
+  const scrollToViewer = () => {
+    if (!viewer) return;
+    const startY = window.scrollY;
+    viewer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => {
+      if (Math.abs(window.scrollY - startY) < 4) {
+        const y = Math.max(0, viewer.getBoundingClientRect().top + window.scrollY - 84);
+        window.scrollTo({ top: y, left: 0, behavior: 'instant' });
+      }
+    }, 360);
+  };
+
+  document.querySelectorAll('[data-jump]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const step = document.querySelector('.step[data-step="' + btn.dataset.jump + '"]');
+      scrollToViewer();
+      if (step) setTimeout(() => step.click(), 400);
+    });
+  });
+
+  document.getElementById('btnHeroPlay')?.addEventListener('click', scrollToViewer);
+})();
+</script>
+</body>
+</html>
